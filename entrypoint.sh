@@ -1,7 +1,8 @@
 #! /bin/bash
 
 function main() {
-  crontab cron.conf &&
+  service cron start &&
+    crontab cron.conf &&
     yarn start
 }
 
