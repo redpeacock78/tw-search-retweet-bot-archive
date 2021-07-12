@@ -23,7 +23,9 @@ services:
     networks: 
       - app-net
     volumes:
-      - ./:/bot
+      - .:/bot
+      - /bot/dist
+      - /bot/node_modules
     depends_on: 
       - db
     tty: true
