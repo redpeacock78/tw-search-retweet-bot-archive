@@ -11,8 +11,7 @@ RUN apt update && apt install -y curl && \
   curl -sL https://bootstrap.pypa.io/get-pip.py | python3 - && \
   pip install --user --upgrade git+https://github.com/twintproject/twint.git@origin/master#egg=twint && \
   pip install python-dotenv && \
-  yarn install && \
-  yarn build && \
-  ln -s $(npm root -g) /node_modules
+  npm install && \
+  yarn build
 
 ENTRYPOINT [ "./entrypoint.sh" ]
