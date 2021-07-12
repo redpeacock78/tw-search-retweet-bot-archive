@@ -22,6 +22,8 @@ services:
     container_name: bot_app
     networks: 
       - app-net
+    volumes:
+      - ./:/bot
     depends_on: 
       - db
     tty: true
