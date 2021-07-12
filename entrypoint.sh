@@ -3,7 +3,7 @@
 function main() {
   service cron start &&
     crontab cron.conf &&
-    npm run start
+    yarn start
 }
 
 main
