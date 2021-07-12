@@ -6,7 +6,7 @@ import cron = require("node-cron");
 
 //データベースの設定
 const db_setting = {
-  host: "mysql_container",
+  host: "db",
   user: "docker",
   password: "docker",
   database: "my_db",
