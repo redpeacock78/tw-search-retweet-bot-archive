@@ -1,5 +1,6 @@
 import * as retweet from './retweet';
 import * as scrape from './scrape';
+import * as sleep from './sleep';
 import mysql = require("mysql2/promise");
 import cron = require("node-cron");
 
@@ -35,12 +36,17 @@ const main: () => Promise<void> = async (): Promise<void> => {
     console.log(`New Tweets: ${diff_ids.length}`);
     //差分データが存在すればデータの書き込みとretweetを実行
     if (diff_ids.length !== 0) {
+      //書き込み
       diff_ids.map(async (i: string): Promise<void> => {
-        //書き込みおよびリツイート
         const sql_query = "INSERT INTO tweets SET ?";
         await database.query(sql_query, { tweet_id: i });
-        await retweet(i);
       });
+      //リツイート
+      for (let i of diff_ids) {
+        await retweet(i);
+        console.log(`Retweeted: ${i}`)
+        await sleep(2000);
+      }
     }
   } catch {
     console.log("error");
@@ -50,7 +56,8 @@ const main: () => Promise<void> = async (): Promise<void> => {
 };
 
 
-cron.schedule("*/2 * * * *", async () => {
+//5分毎に実行
+cron.schedule("*/5 * * * *", async () => {
   try {
     console.log("Running...");
     await main();
