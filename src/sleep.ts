@@ -1,5 +1,5 @@
-const sleep = (time: number) => {
-  return new Promise<void>((resolve, reject) => {
+const sleep = (time: number): Promise<void> => {
+  return new Promise<void>((resolve): void => {
     setTimeout(() => {
       resolve();
     }, time);
