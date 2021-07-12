@@ -4,6 +4,6 @@ const sleep = (time: number) => {
       resolve();
     }, time);
   });
-}
+};
 
 export = sleep;

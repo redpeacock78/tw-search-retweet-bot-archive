@@ -9,12 +9,12 @@ const retweet = async (id: string): Promise<void> => {
     access_token_key: process.env.ACCESS_TOKEN_KEY,
     access_token_secret: process.env.ACCESS_TOKEN_SECRET,
   });
-  //使用するAPIの設定と検索設定
-  const condition: string = "statuses/retweet";
+  //使用するAPIの設定
+  const condition = "statuses/retweet";
   //リツイート処理
   await client.post(condition, {
-    id: id
-  })
+    id: id,
+  });
 };
 
 export = retweet;

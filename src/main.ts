@@ -1,6 +1,6 @@
-import * as retweet from './retweet';
-import * as scrape from './scrape';
-import * as sleep from './sleep';
+import * as retweet from "./retweet";
+import * as scrape from "./scrape";
+import * as sleep from "./sleep";
 import mysql = require("mysql2/promise");
 import cron = require("node-cron");
 
@@ -42,9 +42,9 @@ const main: () => Promise<void> = async (): Promise<void> => {
         await database.query(sql_query, { tweet_id: i });
       });
       //リツイート
-      for (let i of diff_ids) {
+      for (const i of diff_ids) {
         await retweet(i);
-        console.log(`Retweeted: ${i}`)
+        console.log(`Retweeted: ${i}`);
         await sleep(2000);
       }
     }
@@ -55,9 +55,8 @@ const main: () => Promise<void> = async (): Promise<void> => {
   }
 };
 
-
 //5分毎に実行
-cron.schedule("*/5 * * * *", async () => {
+cron.schedule("*/5 * * * *", async (): Promise<void> => {
   try {
     console.log("Running...");
     await main();
