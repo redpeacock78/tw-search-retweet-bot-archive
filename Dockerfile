@@ -12,6 +12,7 @@ RUN apt update && apt install -y curl && \
   pip install --user --upgrade git+https://github.com/twintproject/twint.git@origin/master#egg=twint && \
   pip install python-dotenv && \
   yarn install && \
-  yarn build
+  yarn build && \
+  ln -s $(npm root -g) /node_modules
 
 ENTRYPOINT [ "./entrypoint.sh" ]
