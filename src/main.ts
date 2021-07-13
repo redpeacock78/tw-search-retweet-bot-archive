@@ -43,8 +43,11 @@ const main: () => Promise<void> = async (): Promise<void> => {
       });
       //リツイート
       for (const i of diff_ids) {
-        await retweet(i);
-        console.log(`Retweeted: ${i}`);
+        await retweet(i).then((): void => {
+          console.log(`Retweeted: ${i}`);
+        }).catch((): void => {
+          console.error(`Fatal Retweet: ${i}`);
+        });
         await sleep(2000);
       }
     }
