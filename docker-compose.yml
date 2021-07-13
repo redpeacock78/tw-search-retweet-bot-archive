@@ -14,7 +14,7 @@ services:
       MYSQL_PASSWORD: docker
     volumes:
       - ./docker/db/data:/var/lib/mysql
-    command: bash -c 'usermod -o -u 1000 mysql; groupmod -o -g 500 mysql; chown -R mysql:root /var/run/mysqld/; /entrypoint.sh mysqld --user=mysql --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci'
+    command: bash -c 'usermod -o -u 1000 docker; groupmod -o -g 500 docker; chown -R docker:root /var/run/mysqld/; /entrypoint.sh mysqld --user=docker --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci'
 
   app:
     image: bot_app

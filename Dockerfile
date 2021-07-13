@@ -14,4 +14,4 @@ RUN apt update && apt install -y curl && \
   yarn install && \
   yarn build
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+ENTRYPOINT [ "bash", "-c", "'while !</dev/tcp/db/3306; do sleep 1; done; ./entrypoint.sh'" ]
