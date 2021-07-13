@@ -58,8 +58,8 @@ const main: () => Promise<void> = async (): Promise<void> => {
   }
 };
 
-//5分毎に実行
-cron.schedule("*/5 * * * *", async (): Promise<void> => {
+//一定間隔で実行
+cron.schedule(process.env.NODE_CRON, async (): Promise<void> => {
   try {
     console.log("Running...");
     await main();
