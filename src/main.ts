@@ -1,3 +1,4 @@
+require("dotenv").config();
 import * as retweet from "./retweet";
 import * as scrape from "./scrape";
 import * as sleep from "./sleep";
