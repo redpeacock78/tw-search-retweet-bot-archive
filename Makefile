@@ -9,7 +9,7 @@ build-up: ## Build the container and get started
 .PHONY: stop
 stop: ## Stop running containers without deleting them
 	@docker-compose stop
-.PHONY: sown
+.PHONY: down
 down: ## Stop the container and delete the container, network, volume, and image created in up
 	@docker-compose down
 .PHONY: down-rm
