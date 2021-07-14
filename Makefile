@@ -6,6 +6,9 @@ up: ## Start the container
 .PHONY: build-up
 build-up: ## Build the container and get started
 	@docker-compose up -d --build
+.PHONY: start
+start: ## Start an existing container as a service
+	@docker-compose start
 .PHONY: stop
 stop: ## Stop running containers without deleting them
 	@docker-compose stop
