@@ -106,7 +106,7 @@ $ make up
 ### 📕 ライブラリ
 - [twint](https://github.com/twintproject/twint) (Twitterの情報取得はこのライブラリに依存しています)
 - [node-twitter](https://github.com/desmondmorris/node-twitter) (Twitter APIの操作はこのライブラリに依存しています)
-### 🎁 心からの感謝
+### 🎁 感謝
 - [木賃ふくよし(芸名) @ 寿烏丸るみの中身(@wb_opus_1)](https://twitter.com/wb_opus_1) (提案者)
 
 
