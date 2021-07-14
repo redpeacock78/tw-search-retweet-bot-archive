@@ -78,7 +78,7 @@ $ make up
     </tr>
   </thead>
   <th align="center">Brand</th>
-  <th align="left">Adsress</th>
+  <th align="center">Adsress</th>
   <tr>
     <td align="center">BAT</td>
     <td align="left">0xE2876c1264f9d202bad8f8Bb2f1D632b54Df9637</td>
