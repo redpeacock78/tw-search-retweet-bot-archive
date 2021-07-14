@@ -99,7 +99,7 @@ Please [Create Issues](https://github.com/redpeacock78/tw-search-retweet-bot/iss
 - Main Programs and Documents: [@redpeacock78](https://github.com/redpeacock78)
 
 
-## 🎉 Thanks
+## 🎉 Acknowledgements
 ### 📕 Libraries
 - [twint](https://github.com/twintproject/twint)(Getting Twitter information depends on this library)
 - [node-twitter](https://github.com/desmondmorris/node-twitter) (The Twitter API operations depend on this library)
