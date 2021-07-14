@@ -5,8 +5,8 @@
 Documentation: [English version](https://github.com/redpeacock78/tw-search-retweet-bot/blob/master/README.md) | 日本語
 
 
-## 📄 About
-**🤖 Twitterで指定した検索条件にヒットしたツイートをリツイートするBOT🐤**  
+## 📄 これは何?
+**🤖 Twitterで指定した検索条件にヒットしたツイートをリツイートするBOTです🐤**  
   
 例: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsbot)  
 
