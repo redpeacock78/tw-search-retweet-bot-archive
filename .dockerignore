@@ -1,4 +1,5 @@
 .git
+docs
 dist
 docker
 node_modules
