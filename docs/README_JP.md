@@ -31,7 +31,7 @@ ACCESS_TOKEN_SECRET='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 // Twitter検索設定
 SEARCH_QUERY='ツイッターで検索したい内容'
-SEARCH_LIMIT='検索対象の取得する最大件数'
+SEARCH_LIMIT='検索結果の最大取得件数'
 
 // どのくらいの頻度で検索を行うかの設定
 // 以下の設定は、5分間隔で動作します。
