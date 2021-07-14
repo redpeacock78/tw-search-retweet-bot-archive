@@ -6,7 +6,7 @@
 
 
 ## 📄 About
-**🤖 A BOT that retweets tweets that hit the specified search criteria on Twitter.🐤**  
+**🤖 Create a BOT that retweets tweets that hit the specified search criteria on Twitter🐤**  
   
 Sample: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsbot)  
 
