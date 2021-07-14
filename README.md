@@ -64,8 +64,8 @@ $ make up
 - [eslint](https://eslint.org/)(7.30.0)
 - [prettier](https://prettier.io/)(2.3.2)
 
-## ❤ Donate
-**If you feel that this project has really helped you and you would like to give back to the author, please donate.**  
+## ❤ Donate/Support
+**Donations and support are always welcome. If you can help us pay for 🥓 or a cup of ☕️ , the author will do his best to add a new feature or fix a bug.**  
   
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.me/redpeacock78) [![Ko-Fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/redpeacock78) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/redpeacock78)  
 |<img src="https://i.imgur.com/yEjo3BS.jpg"  width="50%">|<img src="https://i.imgur.com/Mj43KvP.jpg" width="33%">|
