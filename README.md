@@ -104,7 +104,7 @@ Please [Create Issues](https://github.com/redpeacock78/tw-search-retweet-bot/iss
 - [twint](https://github.com/twintproject/twint)(Getting Twitter information depends on this library)
 - [node-twitter](https://github.com/desmondmorris/node-twitter) (The Twitter API operations depend on this library)
 ### 🎁 Special Thanks
-- [木賃ふくよし(芸名) @ 寿烏丸るみの中身(@wb_opus_1)](https://twitter.com/wb_opus_1) (Drafter)
+- [木賃ふくよし(芸名) @ 寿烏丸るみの中身(@wb_opus_1)](https://twitter.com/wb_opus_1) (Proponent)
 
 
 ## 🥝 License
