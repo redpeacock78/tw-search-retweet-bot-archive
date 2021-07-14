@@ -68,34 +68,36 @@ $ make up
 **If you feel that this project has really helped you and you would like to give back to the author, please donate.**  
   
 [![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.me/redpeacock78) [![Ko-Fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/redpeacock78) [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/redpeacock78)  
-|<img src="https://i.imgur.com/yEjo3BS.jpg" style="width: 150px">|<img src="https://i.imgur.com/Mj43KvP.jpg" style="width: 150px">|
+|<img src="https://i.imgur.com/yEjo3BS.jpg"  width="50%">|<img src="https://i.imgur.com/Mj43KvP.jpg" width="33%">|
 |:-:|:-:|
 |[PayPay](https://paypay.ne.jp/guide/send/?_ga=2.238451843.205875726.1558440708-447181547.1558440708)|[Kyash](https://support.kyash.co/hc/ja/articles/900002413646-%E9%80%81%E9%87%91%E6%96%B9%E6%B3%95)|  
 <table>
-	<thead>
-		<tr>
-			<th colspan="2" align="center">Cryptocurrency</th>
-		</tr>
-	</thead>
-	<th align="center">Brand</th>
-	<th align="left">Adsress</th>
-	<tr>
-		<td align="center">BAT</td>
-		<td align="left">0xE2876c1264f9d202bad8f8Bb2f1D632b54Df9637</td>
-	<tr>
-		<td align="center">BTC</td>
-		<td align="left">3DANdi2ooepsWpTFMbM9ZRgLtjKJB1sjkm</td>
-	<tr>
-		<td align="center">BHC</td>
-		<td align="left">3DANdi2ooepsWpTFMbM9ZRgLtjKJB1sjkm</td>
-	</tr>
+  <thead>
+    <tr>
+      <th colspan="2" align="center">Cryptocurrency</th>
+    </tr>
+  </thead>
+  <th align="center">Brand</th>
+  <th align="left">Adsress</th>
+  <tr>
+    <td align="center">BAT</td>
+    <td align="left">0xE2876c1264f9d202bad8f8Bb2f1D632b54Df9637</td>
+  <tr>
+    <td align="center">BTC</td>
+    <td align="left">3DANdi2ooepsWpTFMbM9ZRgLtjKJB1sjkm</td>
+  <tr>
+    <td align="center">BHC</td>
+    <td align="left">3DANdi2ooepsWpTFMbM9ZRgLtjKJB1sjkm</td>
+  </tr>
 </table>
 
 ## 🚀 Contribution
 Please [Create Issues](https://github.com/redpeacock78/tw-search-retweet-bot/issues/new), or Pull Requests.
 
+
 ## 👾 Author
 - Main Programs and Documents: [@redpeacock78](https://github.com/redpeacock78)
+
 
 ## 🎉 Thanks
 ### 📕 Libraries
@@ -103,6 +105,7 @@ Please [Create Issues](https://github.com/redpeacock78/tw-search-retweet-bot/iss
 - [node-twitter](https://github.com/desmondmorris/node-twitter) (The Twitter API operations depend on this library)
 ### 🎁 Special Thanks
 - [木賃ふくよし(芸名) @ 寿烏丸るみの中身(@wb_opus_1)](https://twitter.com/wb_opus_1) (Drafter)
+
 
 ## 🥝 License
 This source code is licensed [MIT](https://github.com/redpeacock78/tw-search-retweet-bot/blob/master/LICENCE).
