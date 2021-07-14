@@ -6,7 +6,7 @@
 
 
 ## 📄 これは何?
-**🤖 Twitterで指定した検索条件にヒットしたツイートをリツイートするBOTです🐤**  
+**🤖 Twitterで指定した検索条件にヒットしたツイートをリツイートするBOTを作成します🐤**  
   
 例: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsbot)  
 
