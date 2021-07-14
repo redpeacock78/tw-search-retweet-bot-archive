@@ -1,13 +1,17 @@
-FROM debian:buster-slim
+FROM debian:buster-20210621-slim
 
 WORKDIR /bot
 COPY ./ ./
-RUN apt update && apt install -y curl && \
+RUN DEBIAN_FRONTEND=noninteractive \
+  apt-get update && \
+  apt-get install -yq curl && \
   curl -sL https://deb.nodesource.com/setup_lts.x | bash - && \
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
-  apt update && \
-  apt install -y git cron nodejs yarn python3-distutils default-mysql-client && \
+  apt-get update && \
+  apt-get install -yq --no-install-recommends git cron nodejs yarn python3-distutils default-mysql-client && \
+  apt-get clean && \
+  rm -rf /var/lib/apt/lists/* && \
   curl -sL https://bootstrap.pypa.io/get-pip.py | python3 - && \
   pip install --user --upgrade git+https://github.com/twintproject/twint.git@origin/master#egg=twint && \
   pip install python-dotenv && \
