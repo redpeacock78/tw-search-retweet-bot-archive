@@ -3,7 +3,7 @@
 function main() {
   # MySQLが立ち上がるまで待つ処理
   echo 'waiting for mysqld to be connectable...' &&
-    until mysqladmin ping -h mysql_container --silent; do
+    until python3 python/db_check.py 2>/dev/null; do
       sleep 10
     done &&
     echo 'connected!' &&
