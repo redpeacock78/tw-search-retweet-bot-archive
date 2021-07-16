@@ -7,12 +7,13 @@ RUN DEBIAN_FRONTEND=noninteractive \
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   apt-get update && \
-  apt-get install -yq --no-install-recommends git cron nodejs yarn python3-distutils default-mysql-client && \
+  apt-get install -yq --no-install-recommends git cron nodejs yarn python3-distutils && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
   curl -sL https://bootstrap.pypa.io/get-pip.py | python3 - && \
   pip install --user --upgrade git+https://github.com/twintproject/twint.git@origin/master#egg=twint && \
-  pip install python-dotenv
+  pip install python-dotenv mysql-connector-python && \
+  pip cache purge
 
 WORKDIR /bot
 COPY ./ ./
