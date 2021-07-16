@@ -1,7 +1,5 @@
 FROM debian:buster-20210621-slim
 
-WORKDIR /bot
-COPY ./ ./
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update && \
   apt-get install -yq curl && \
@@ -14,8 +12,11 @@ RUN DEBIAN_FRONTEND=noninteractive \
   rm -rf /var/lib/apt/lists/* && \
   curl -sL https://bootstrap.pypa.io/get-pip.py | python3 - && \
   pip install --user --upgrade git+https://github.com/twintproject/twint.git@origin/master#egg=twint && \
-  pip install python-dotenv && \
-  yarn install && \
+  pip install python-dotenv
+
+WORKDIR /bot
+COPY ./ ./
+RUN yarn install && \
   yarn build
 
 ENTRYPOINT [ "./entrypoint.sh" ]
