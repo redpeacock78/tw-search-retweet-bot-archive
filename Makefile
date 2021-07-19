@@ -1,11 +1,16 @@
+dist =
 name =
 
 .PHONY: up
 up: ## Start the container
 	@docker-compose up -d
 .PHONY: build-up
-build-up: ## Build the container and get started
+build-up: ## Build the container and get started (ARGS: dist)
+ifeq ($(dist), alpine)
+	@DOCKER_FILE="Dockerfile.alpine" docker-compose up -d --build
+else
 	@docker-compose up -d --build
+endif
 .PHONY: start
 start: ## Start an existing container as a service
 	@docker-compose start

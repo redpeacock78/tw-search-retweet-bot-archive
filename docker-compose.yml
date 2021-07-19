@@ -18,7 +18,9 @@ services:
 
   app:
     image: bot_app
-    build: .
+    build:
+      context: .
+      dockerfile: ${DOCKER_FILE:-Dockerfile}
     container_name: bot_app
     networks: 
       - app-net

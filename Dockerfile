@@ -18,6 +18,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
 WORKDIR /bot
 COPY ./ ./
 RUN yarn install && \
-  yarn build
+  yarn build && \
+  yarn cache clean
 
 ENTRYPOINT [ "./entrypoint.sh" ]

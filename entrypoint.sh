@@ -9,8 +9,15 @@ function main() {
     echo 'connected!' &&
     {
       # メイン
-      service cron start &&
+      if [[ -n "$(cat /etc/debian_version 2>/dev/null)" ]]; then
+        # Debian
         crontab cron.conf &&
+          service cron start
+      elif [[ -n "$(cat /etc/alpine-release 2>/dev/null)" ]]; then
+        # Alpine
+        crontab cron.conf &&
+          crond -l 8
+      fi &&
         yarn start
     }
 }
