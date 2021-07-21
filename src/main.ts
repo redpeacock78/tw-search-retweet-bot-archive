@@ -16,8 +16,8 @@ cron.schedule(process.env.NODE_CRON, async (): Promise<void> => {
           .then((): void => {
             console.log(`Successfully Retweeted: ${i}`);
           })
-          .catch((): void => {
-            error.push(`${i}`);
+          .catch((err: Error): void => {
+            error.push(err[0].message);
             console.error(`Failed to Retweet: ${i}`);
           });
         await sleep(2000);
@@ -26,7 +26,11 @@ cron.schedule(process.env.NODE_CRON, async (): Promise<void> => {
     if (!error.length) {
       console.log('Done!');
     } else {
-      console.error(`Failed to Retweet:\n  ${error.join('\n  ')}`);
+      const logs: {} = error.reduce((prev: {}, current: string): {} => {
+        prev[current] = (prev[current] || 0) + 1;
+        return prev;
+      }, {});
+      console.log(JSON.stringify(logs, null, ' '));
     }
   } catch (err: unknown) {
     console.error(err);

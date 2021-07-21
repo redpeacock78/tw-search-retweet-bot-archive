@@ -9,12 +9,7 @@ const scrape: () => Promise<string[]> = async (): Promise<string[]> => {
         return resolve(data);
       });
     });
-    const result: string[] = ((await resp) as string[])
-      .reverse()
-      .map((i): string => {
-        return i.substring(0, i.indexOf(' '));
-      });
-    return result;
+    return (resp as string[]).reverse();
   } catch {
     throw new Error();
   }
