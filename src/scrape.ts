@@ -15,8 +15,8 @@ const scrape: () => Promise<string[]> = async (): Promise<string[]> => {
         return i.substring(0, i.indexOf(" "));
       });
     return result;
-  } catch (e) {
-    return e;
+  } catch {
+    throw new Error();
   }
 };
 
