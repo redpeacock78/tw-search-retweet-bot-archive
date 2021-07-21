@@ -5,6 +5,7 @@ dist
 docker
 node_modules
 .env
+.prettierrc
 .gitignore
 .dockerignore
 Dockerfile
