@@ -30,6 +30,10 @@ ACCESS_TOKEN_KEY='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 ACCESS_TOKEN_SECRET='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 // Twitter検索設定
+// 検索したい内容が複数ある場合は
+// SEARCH_QUERY='検索_1
+// 検索_2'
+// などのように改行で区切るか改行コード(\n)で区切ってください。
 SEARCH_QUERY='ツイッターで検索したい内容'
 SEARCH_LIMIT='検索結果の最大取得件数'
 
