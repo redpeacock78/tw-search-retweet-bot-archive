@@ -29,6 +29,10 @@ ACCESS_TOKEN_KEY='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 ACCESS_TOKEN_SECRET='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 // Twitter Search Setting
+// If there is more than one thing you want to search for, use
+// SEARCH_QUERY='Search_1
+// Search_2'
+// or use a line feed code (\n) to separate them.
 SEARCH_QUERY='What you want to search for on Twitter'
 SEARCH_LIMIT='Maximum number of cases to be retrieved'
 
@@ -48,7 +52,7 @@ $ make build-up dist=alpine
 # Shutdown
 $ make down
 
-# Activation after the second time
+# Startup after the second time
 $ make up
 ```
 
