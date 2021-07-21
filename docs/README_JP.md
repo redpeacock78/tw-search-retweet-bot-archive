@@ -10,14 +10,15 @@
   
 例: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsbot)  
 
+
+
+## 🛠 使用方法
 ### 📦 依存関係
 ***注意してください。プログラムを実行するには、以下のものが必要となりますので、あらかじめインストールしておいてください。***
 - [Docker](https://docs.docker.jp/)
 - [Docker Compose](https://docs.docker.jp/compose/overview.html)
 - [GNU Make](https://www.gnu.org/software/make/)
 
-
-## 🛠 使用方法
 ### ⚙ 設定
 このリポジトリを`git clone`するか、[ダウンロード](https://github.com/redpeacock78/tw-search-retweet-bot/archive/refs/heads/master.zip)して解凍してください。  
 
@@ -59,19 +60,15 @@ $ make up
 
 ## 🧑‍💻 使用技術
 ### 仮想化
-- [Docker](https://docs.docker.jp/)(20.10.7)
-- [Docker Compose](https://docs.docker.jp/compose/overview.html)(1.29.2)
+[![Docker](https://img.shields.io/badge/docker(20.10.7)-0db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://docs.docker.jp/) [![](https://img.shields.io/badge/docker%20compose(1.29.2)-0db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)](https://docs.docker.jp/compose/overview.html)
 ### 自動化ツール
-- [GNU Make](https://www.gnu.org/software/make/)(3.81)
+[![GNU Make](https://img.shields.io/badge/gnu%20make(3.81)-A42E2B?style=for-the-badge&logo=gnu&logoColor=white)](https://www.gnu.org/software/make/)
 ### データベース
-- [MySQL](https://www.mysql.com/jp/)(8.0.19)
+[![MySQL](https://img.shields.io/badge/mysql(8.0.19)-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white)](https://www.mysql.com/jp/)
 ### 言語
-- [Node.js](https://nodejs.org/ja/)(16.3.0)
-- [TypeScript](https://www.typescriptlang.org/)(4.3.5)
-- [Python](https://www.python.org/)(3.9.5)
+[![Node.js](https://img.shields.io/badge/node.js(16.3.0)-43853D.svg?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/ja/) [![TypeScript](https://img.shields.io/badge/typescript(4.3.5)-007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/) [![Python](https://img.shields.io/badge/python(3.9.5)-14354C.svg?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/) [![GNU Bash](https://img.shields.io/badge/gnu%20bash(5.1.8)-4EAA25.svg?style=for-the-badge&logo=gnu%20bash&logoColor=white)](https://www.gnu.org/software/bash/)
 ### リンター
-- [eslint](https://eslint.org/)(7.30.0)
-- [prettier](https://prettier.io/)(2.3.2)
+[![eslint](https://img.shields.io/badge/ESLint(7.30.0)-4B3263?style=for-the-badge&logo=eslint&logoColor=white)](https://eslint.org/) [![Prettier](https://img.shields.io/badge/Prettier(2.3.2)-F7B93E?style=for-the-badge&logo=prettier&logoColor=white)](https://prettier.io/)
 
 ## ❤ 寄付・支援
 **寄付やサポートはいつでも歓迎です。🥓や一杯の☕️の支払いにご協力いただければ、作者は新機能の追加やバグの修正に最善を尽くします。**  
