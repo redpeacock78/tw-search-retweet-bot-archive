@@ -1,9 +1,10 @@
+service = 
 dist =
 name =
 
 .PHONY: up
-up: ## Start the container
-	@docker-compose up -d
+up: ## Start the container (ARGS: service)
+	@docker-compose up -d ${service}
 .PHONY: build-up
 build-up: ## Build the container and get started (ARGS: dist)
 ifeq ($(dist), alpine)
