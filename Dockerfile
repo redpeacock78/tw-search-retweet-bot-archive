@@ -10,14 +10,13 @@ RUN DEBIAN_FRONTEND=noninteractive \
   apt-get install -yq --no-install-recommends git cron nodejs yarn python3-distutils && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
-  curl -sL https://bootstrap.pypa.io/get-pip.py | python3 - && \
-  pip install --user --upgrade git+https://github.com/twintproject/twint.git@origin/master#egg=twint && \
-  pip install python-dotenv mysql-connector-python && \
-  pip cache purge
+  curl -sL https://bootstrap.pypa.io/get-pip.py | python3 -
 
 WORKDIR /bot
 COPY ./ ./
-RUN yarn install && \
+RUN pip install -r requirements.txt && \
+  pip cache purge && \
+  yarn install && \
   yarn build && \
   yarn cache clean
 
