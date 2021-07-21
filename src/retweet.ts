@@ -1,5 +1,5 @@
-require("dotenv").config();
-import twitter = require("twitter");
+require('dotenv').config();
+import twitter = require('twitter');
 
 const retweet = async (id: string): Promise<void> => {
   //APIキーの読み込みと設定
@@ -10,7 +10,7 @@ const retweet = async (id: string): Promise<void> => {
     access_token_secret: process.env.ACCESS_TOKEN_SECRET,
   });
   //使用するAPIの設定
-  const condition = "statuses/retweet";
+  const condition = 'statuses/retweet';
   //リツイート処理
   await client.post(condition, {
     id: id,

@@ -1,14 +1,14 @@
-require("dotenv").config();
-import * as data from "./data";
-import * as sleep from "./sleep";
-import * as retweet from "./retweet";
-import cron = require("node-cron");
+require('dotenv').config();
+import * as data from './data';
+import * as sleep from './sleep';
+import * as retweet from './retweet';
+import cron = require('node-cron');
 
 //一定間隔で実行
 cron.schedule(process.env.NODE_CRON, async (): Promise<void> => {
   try {
     const error: string[] = [];
-    console.log("Running...");
+    console.log('Running...');
     await data().then(async (ids: string[]): Promise<void> => {
       console.log(`New Tweets: ${ids.length}`);
       for (const i of ids) {
@@ -24,9 +24,9 @@ cron.schedule(process.env.NODE_CRON, async (): Promise<void> => {
       }
     });
     if (!error.length) {
-      console.log("Done!");
+      console.log('Done!');
     } else {
-      console.error(`Failed to Retweet:\n  ${error.join("\n  ")}`);
+      console.error(`Failed to Retweet:\n  ${error.join('\n  ')}`);
     }
   } catch (err: unknown) {
     console.error(err);
