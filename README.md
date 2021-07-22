@@ -21,24 +21,24 @@ Sample: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsb
 ### ⚙ Setup
 You can either `git clone` this repository or [download](https://github.com/redpeacock78/tw-search-retweet-bot/archive/refs/heads/master.zip) and unzip it.  
 Create an `.env` file in the root directory and write the various settings as follows
-```javascript
-// Twitter API Key
+```bash
+# Twitter API Key
 CONSUMER_KEY='xxxxxxxxxxxxxxxxxxxxx'
 CONSUMER_SECRET='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 ACCESS_TOKEN_KEY='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 ACCESS_TOKEN_SECRET='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
-// Twitter Search Setting
-// If there is more than one thing you want to search for, use
-// SEARCH_QUERY='Search_1
-// Search_2'
-// or use a line feed code (\n) to separate them.
+# Twitter Search Setting
+# If there is more than one thing you want to search for, use
+# SEARCH_QUERY='Search_1
+# Search_2'
+# or use a line feed code (\n) to separate them.
 SEARCH_QUERY='What you want to search for on Twitter'
 SEARCH_LIMIT='Maximum number of cases to be retrieved'
 
-// How often do you perform searches
-// The following settings will work at 5-minute intervals
-// For more information, see https://github.com/merencia/node-cron
+# How often do you perform searches
+# The following settings will work at 5-minute intervals
+# For more information, see https://github.com/merencia/node-cron
 NODE_CRON='*/5 * * * *'
 ```
 

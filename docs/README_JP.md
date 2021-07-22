@@ -23,24 +23,24 @@
 このリポジトリを`git clone`するか、[ダウンロード](https://github.com/redpeacock78/tw-search-retweet-bot/archive/refs/heads/master.zip)して解凍してください。  
 
 プロジェクトのルートディレクトリに`.env`ファイルを作成し、以下のように各種設定を記述します。
-```javascript
-// Twitter API Key
+```bash
+# Twitter API Key
 CONSUMER_KEY='xxxxxxxxxxxxxxxxxxxxx'
 CONSUMER_SECRET='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 ACCESS_TOKEN_KEY='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 ACCESS_TOKEN_SECRET='xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
-// Twitter検索設定
-// 検索したい内容が複数ある場合は
-// SEARCH_QUERY='検索_1
-// 検索_2'
-// などのように改行で区切るか改行コード(\n)で区切ってください。
+# Twitter検索設定
+# 検索したい内容が複数ある場合は
+# SEARCH_QUERY='検索_1
+# 検索_2'
+# などのように改行で区切るか改行コード(\n)で区切ってください。
 SEARCH_QUERY='ツイッターで検索したい内容'
 SEARCH_LIMIT='検索結果の最大取得件数'
 
-// どのくらいの頻度で検索を行うかの設定
-// 以下の設定は、5分間隔で動作します。
-// 詳しくは、https://github.com/merencia/node-cron を参照ください。
+# どのくらいの頻度で検索を行うかの設定
+# 以下の設定は、5分間隔で動作します。
+# 詳しくは、https://github.com/merencia/node-cron を参照ください。
 NODE_CRON='*/5 * * * *'
 ```
 
