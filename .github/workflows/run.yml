@@ -28,11 +28,17 @@ jobs:
           result-encoding: string
       - uses: actions/checkout@v2
         if: steps.running_count.outputs.result=='1'
+      - name: Get random hash
+        if: steps.running_count.outputs.result=='1'
+        id: hash
+        run: |
+          hash="$(sha256sum <(openssl rand -base64 10)|awk '{print $1}')"
+          echo "::set-output name=hash::${hash}"
       - uses: actions/cache@v2
         if: steps.running_count.outputs.result=='1'
         with:
           path: ./docker
-          key: tw_db-${{ steps.hash.outputs.hash }}-${{ hashFiles('Dockerfile') }}
+          key: tw_db-${{ steps.hash.outputs.hash }}-${{ steps.hash.outputs.hash }}
           restore-keys: |
             tw_db-
       - name: run
