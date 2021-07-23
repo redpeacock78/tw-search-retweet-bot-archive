@@ -38,9 +38,14 @@ jobs:
         if: steps.running_count.outputs.result=='1'
         with:
           path: ./docker
-          key: tw_db-${{ steps.hash.outputs.hash }}-${{ steps.hash.outputs.hash }}
+          key: tw_db-${{ steps.hash.outputs.hash }}
           restore-keys: |
             tw_db-
+      - run: docker-compose pull
+        if: steps.running_count.outputs.result=='1'
+      - uses: satackey/action-docker-layer-caching@v0.0.11
+        if: steps.running_count.outputs.result=='1'
+        continue-on-error: true
       - name: run
         if: steps.running_count.outputs.result=='1'
         run: |
