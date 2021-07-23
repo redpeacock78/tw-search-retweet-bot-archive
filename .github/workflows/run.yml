@@ -1,0 +1,53 @@
+name: run
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  push:
+    branches:
+      - master
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    name: Run
+    steps:
+      - name: Check is running
+        uses: actions/github-script@v4
+        id: running_count
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            const runed = await github.actions.listWorkflowRuns({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: "run.yml",
+              status:"in_progress"
+            });
+            return runed.data.total_count
+          result-encoding: string
+      - uses: actions/checkout@v2
+        if: steps.running_count.outputs.result=='1'
+      - uses: actions/cache@v2
+        if: steps.running_count.outputs.result=='1'
+        with:
+          path: ./docker
+          key: tw_db-${{ steps.hash.outputs.hash }}-${{ hashFiles('Dockerfile') }}
+          restore-keys: |
+            tw_db-
+      - name: run
+        if: steps.running_count.outputs.result=='1'
+        run: |
+          docker-compose up -d db && \
+          docker-compose up --build app && \
+          docker-compose stop db
+        env:
+          DOCKER_BUILDKIT: 1
+          COMPOSE_DOCKER_CLI_BUILD: 1
+          DOCKER_FILE: "Dockerfile.alpine"
+          CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+          CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+          ACCESS_TOKEN_KEY: ${{ secrets.ACCESS_TOKEN_KEY }}
+          ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
+          SEARCH_QUERY: ${{ secrets.SEARCH_QUERY }}
+          SEARCH_LIMIT: ${{ secrets.SEARCH_LIMIT }}
+          GITHUB_ACTIONS: "true"
