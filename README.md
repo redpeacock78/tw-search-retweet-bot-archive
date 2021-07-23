@@ -15,9 +15,9 @@ Sample: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsb
 ### 🀄️ Way 1: Works on Github Actions
 1. Fork this repository.
 2. Add the following `Secret Environment Values` to `Settings`->`Secrets` in the forked repository.
-    <details><summary><code>Secret Environment Values List</code></summary><div>
+    <details><summary><b>Secret Environment Values List</b></summary><div>
     
-    |Variable name|Meaning|Default|Yes/No|Notes|
+    |Variable name|Meaning|Default|Required|Notes|
     |:-:|:-:|:-:|:-:|:-:|
     |`CONSUMER_KEY`|Twitter API consumer key|-|Yes||
     |`CONSUMER_SECRET`|Twitter API consumer secret|-|Yes||
