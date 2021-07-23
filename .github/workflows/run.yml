@@ -39,7 +39,8 @@ jobs:
         run: |
           docker-compose up -d db && \
           docker-compose up --build app && \
-          docker-compose stop db
+          docker-compose stop db && \
+          sudo chown -R $USER:$USER ./docker
         env:
           DOCKER_BUILDKIT: 1
           COMPOSE_DOCKER_CLI_BUILD: 1
