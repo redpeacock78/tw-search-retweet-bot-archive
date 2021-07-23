@@ -46,6 +46,15 @@ jobs:
       - uses: satackey/action-docker-layer-caching@v0.0.11
         if: steps.running_count.outputs.result=='1'
         continue-on-error: true
+      - name: judge SEARCH_LIMIT
+        if: steps.running_count.outputs.result=='1'
+        id: search_limit
+        run: |
+          if [[ ${{ secrets.SEARCH_LIMIT }} == "" ]]; then
+            echo "::set-output name=value::100"
+          else
+            echo "::set-output name=value::${{ secrets.SEARCH_LIMIT }}"
+          fi
       - name: run
         if: steps.running_count.outputs.result=='1'
         run: |
@@ -62,5 +71,5 @@ jobs:
           ACCESS_TOKEN_KEY: ${{ secrets.ACCESS_TOKEN_KEY }}
           ACCESS_TOKEN_SECRET: ${{ secrets.ACCESS_TOKEN_SECRET }}
           SEARCH_QUERY: ${{ secrets.SEARCH_QUERY }}
-          SEARCH_LIMIT: ${{ secrets.SEARCH_LIMIT }}
+          SEARCH_LIMIT: ${{ steps.search_limit.outputs.value }}
           GITHUB_ACTIONS: "true"
