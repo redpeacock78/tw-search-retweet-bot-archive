@@ -14,7 +14,9 @@ Sample: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsb
 ## 🛠 Usage
 ### 🀄️ Way 1: Works on Github Actions
 1. Fork this repository.
-2. Add the following secret environment to `Settings`->`Secrets` in the forked repository.
+2. Add the following `Secret Environment Values` to `Settings`->`Secrets` in the forked repository.
+    <details><summary><code>Secret Environment Values List</code></summary><div>
+    
     |Variable name|Meaning|Default|Yes/No|Notes|
     |:-:|:-:|:-:|:-:|:-:|
     |`CONSUMER_KEY`|Twitter API consumer key|-|Yes||
@@ -23,6 +25,8 @@ Sample: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsb
     |`ACCESS_TOKEN_SECRET`|Twitter API access token secret|-|Yes||
     |`SEARCH_QUERY`|What you want to search for on Twitter|-|Yes|Words you want to search for on Twitter (You can use the [`search command`](https://developer.twitter.com/en/docs/twitter-api/v1/rules-and-filtering/search-operators)).|
     |`SEARCH_LIMIT`|Maximum number of cases to be retrieved|100|No|By default, it is set to retrieve 100 items.|
+    </div></details>
+
 3. Agree to enable Actions.
 4. After agreeing to activate the action, re-enable the scheduled workflow (the scheduled task of the workflow).  
 ***According to [the official documentation](https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow), when a public repository is forked, scheduled workflows are disabled by default. Therefore, in order to enable Github Actions timed tasks for forked repositories, this step is required.***
