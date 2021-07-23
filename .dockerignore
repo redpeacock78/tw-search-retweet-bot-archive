@@ -9,6 +9,7 @@ node_modules
 .gitignore
 .dockerignore
 Dockerfile
+Dockerfile.gh
 Dockerfile.alpine
 docker-compose.yml
 README.md
