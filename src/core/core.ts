@@ -7,16 +7,26 @@ const core: () => Promise<void> = async (): Promise<void> => {
   await data()
     .then(async (ids: string[]): Promise<void> => {
       console.log(`New Tweets: ${ids.length}`);
+      const error: string[] = [];
       for (const i of ids) {
         await retweet(i)
           .then((): void => {
             console.log(`Successfully Retweeted: ${i}`);
           })
           .catch((err: Error): void => {
+            error.push(err[0].message);
             console.error(`Failed to Retweet: ${i}`);
-            console.error(err);
           });
         await sleep(2000);
+      }
+      if (!error.length) {
+        console.log('Done!');
+      } else {
+        const logs: {} = error.reduce((prev: {}, current: string): {} => {
+          prev[current] = (prev[current] || 0) + 1;
+          return prev;
+        }, {});
+        console.error(JSON.stringify(logs, null, ' '));
       }
     })
     .catch((err: Error): void => {
