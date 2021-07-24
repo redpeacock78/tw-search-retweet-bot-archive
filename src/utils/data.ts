@@ -38,7 +38,8 @@ const data: () => Promise<string[]> = async (): Promise<string[]> => {
       });
     }
     return diff_ids;
-  } catch {
+  } catch (e) {
+    console.error(e);
     throw new Error();
   } finally {
     database.end();
