@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      IMAGE_NAME: cie.js
+      IMAGE_NAME: tw-search-retweet-bot
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v2
