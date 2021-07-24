@@ -1,4 +1,4 @@
-name: run
+name: tw-search-retweet-bot
 on:
   workflow_dispatch:
   schedule:
@@ -41,16 +41,13 @@ jobs:
           key: tw_db-${{ steps.hash.outputs.hash }}
           restore-keys: |
             tw_db-
-      - name: judge SEARCH_LIMIT
+      - name: Judge SEARCH_LIMIT
         if: steps.running_count.outputs.result=='1'
         id: search_limit
         run: |
-          if [[ ${{ secrets.SEARCH_LIMIT }} == "" ]]; then
-            echo "::set-output name=value::100"
-          else
-            echo "::set-output name=value::${{ secrets.SEARCH_LIMIT }}"
-          fi
-      - name: run
+            default="${{ secrets.SEARCH_LIMIT }}"
+            echo "::set-output name=value::${default:-100}"
+      - name: Run
         if: steps.running_count.outputs.result=='1'
         run: |
           docker-compose -f docker-compose-gh.yml up -d db && \
