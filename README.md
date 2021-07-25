@@ -12,7 +12,7 @@ Sample: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsb
 
 
 ## 🛠 Usage
-### 🀄️ Way 1: Works on Github Actions
+### 🀄️ Way 1: Runs on Github Actions (This is the easiest)
 1. Fork this repository.
 2. Add the following `Secret Environment Values` to `Settings`->`Secrets` in the forked repository.
     <details><summary><b>Secret Environment Values List</b></summary><div>
@@ -21,10 +21,10 @@ Sample: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsb
     |:-:|:-:|:-:|:-:|:-:|
     |`CONSUMER_KEY`|Twitter API consumer key|-|Yes||
     |`CONSUMER_SECRET`|Twitter API consumer secret|-|Yes||
-    |`ACCESS_TOKEN_KEY`|Twitter API access token key|-|Yes||
-    |`ACCESS_TOKEN_SECRET`|Twitter API access token secret|-|Yes||
+    |`ACCESS_TOKEN_KEY`|Twitter API access token key|-|Yes|Use the token obtained after granting `Read and Write` permissions.|
+    |`ACCESS_TOKEN_SECRET`|Twitter API access token secret|-|Yes|Same as above.|
     |`SEARCH_QUERY`|What you want to search for on Twitter|-|Yes|Words you want to search for on Twitter (You can use the [`search command`](https://developer.twitter.com/en/docs/twitter-api/v1/rules-and-filtering/search-operators)).|
-    |`SEARCH_LIMIT`|Maximum number of cases to be retrieved|100|No|By default, it is set to retrieve 100 items.|
+    |`SEARCH_LIMIT`|Maximum number of cases to be retrieved|100|No|By default, it is set to retrieve 100 items (Due to API limitations, it is not recommended to set a number higher than 100).|
     </div></details>
 
 3. Agree to enable Actions.
