@@ -12,13 +12,17 @@ function main() {
       if [[ -n "$(cat /etc/debian_version 2>/dev/null)" ]]; then
         # Debian
         echo 'Start Debian version...' &&
-          crontab cron.conf &&
-          service cron start
+          if [[ "${GITHUB_ACTIONS}" != "true" ]]; then
+            crontab cron.conf &&
+              service cron start
+          fi
       elif [[ -n "$(cat /etc/alpine-release 2>/dev/null)" ]]; then
         # Alpine
         echo 'Start Alpine version...' &&
-          crontab cron.conf &&
-          crond -l 8
+          if [[ "${GITHUB_ACTIONS}" != "true" ]]; then
+            crontab cron.conf &&
+              crond -l 8
+          fi
       fi &&
         yarn start
     }
