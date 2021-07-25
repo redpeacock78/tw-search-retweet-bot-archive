@@ -31,6 +31,9 @@ down-rm: ## Stop the container and delete the container, network, volume, and im
 .PHONY: log
 log: ## View the log (ARGS: name)
 	@docker-compose logs ${name}
+.PHONY: test
+test:
+	@SEARCH_QUERY="test" SEARCH_LIMIT=10 yarn test
 .PHONY: gh-action
 gh-action:
 	@docker-compose up -d db && \

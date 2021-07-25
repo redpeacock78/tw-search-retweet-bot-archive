@@ -2,6 +2,7 @@
 .github
 docs
 dist
+test
 docker
 node_modules
 .env
@@ -9,8 +10,8 @@ node_modules
 .gitignore
 .dockerignore
 Dockerfile
-Dockerfile.gh
 Dockerfile.alpine
 docker-compose.yml
+jest.config.js
 README.md
 Makefile
