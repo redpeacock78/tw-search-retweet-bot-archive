@@ -55,9 +55,6 @@ jobs:
           docker-compose stop db && \
           sudo chown -R $USER:$USER ./docker
         env:
-          DOCKER_BUILDKIT: 1
-          COMPOSE_DOCKER_CLI_BUILD: 1
-          DOCKER_FILE: "Dockerfile.gh"
           CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
           ACCESS_TOKEN_KEY: ${{ secrets.ACCESS_TOKEN_KEY }}
