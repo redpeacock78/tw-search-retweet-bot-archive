@@ -1,7 +1,9 @@
+import os
 import mysql.connector as mydb
 
 conn = mydb.connect(
-    host='mysql_container',
+    host='mysql_container' if os.getenv(
+        'DB_HOST') == None else os.getenv('DB_HOST'),
     port='3306',
     user='docker',
     password='docker',
