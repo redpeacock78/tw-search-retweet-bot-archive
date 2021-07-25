@@ -33,7 +33,11 @@ log: ## View the log (ARGS: name)
 	@docker-compose logs ${name}
 .PHONY: test
 test:
-	@SEARCH_QUERY="test" SEARCH_LIMIT=10 yarn test
+	@docker-compose up -d db && \
+	until DB_HOST="127.0.0.1" python3 libs/db_check.py 2>/dev/null; do sleep 1; done && \
+	SEARCH_QUERY="test" SEARCH_LIMIT="10" DB_HOST="127.0.0.1" yarn test && \
+	docker-compose stop db || \
+	(docker-compose stop db && exit 1)
 .PHONY: gh-action
 gh-action:
 	@docker-compose up -d db && \
