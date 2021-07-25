@@ -16,7 +16,10 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v2
       - name: Run Test
-        run: yarn install && make test
+        run: |
+          pip install -r requirements.txt && \
+          yarn install && \
+          make test
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v1
       - name: Login to GitHub Container Registry
