@@ -16,7 +16,7 @@ jobs:
         uses: actions/github-script@v4
         id: running_count
         with:
-          github-token: ${{secrets.GITHUB_TOKEN}}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const runed = await github.actions.listWorkflowRuns({
               owner: context.repo.owner,
@@ -49,11 +49,7 @@ jobs:
             echo "::set-output name=value::${default:-100}"
       - name: Run
         if: steps.running_count.outputs.result=='1'
-        run: |
-          docker-compose -f docker-compose-gh.yml up -d db && \
-          docker-compose -f docker-compose-gh.yml up app && \
-          docker-compose stop db && \
-          sudo chown -R $USER:$USER ./docker
+        run: make gh-action
         env:
           CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
           CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
