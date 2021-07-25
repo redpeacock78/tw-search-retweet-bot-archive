@@ -51,7 +51,7 @@ services:
       ACCESS_TOKEN_SECRET: ${ACCESS_TOKEN_SECRET:- }
       SEARCH_QUERY: ${SEARCH_QUERY:- }
       SEARCH_LIMIT: ${SEARCH_LIMIT:- }
-      GITHUB_ACTIONS: ${GITHUB_ACTIONS:- }
+      GITHUB_ACTIONS: ${GITHUB_ACTIONS:-false}
 
 networks:
   app-net:

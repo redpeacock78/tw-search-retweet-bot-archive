@@ -4,6 +4,7 @@ docs
 dist
 test
 docker
+coverage
 node_modules
 .env
 .prettierrc

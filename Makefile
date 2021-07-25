@@ -1,6 +1,7 @@
 service = 
 dist =
 name =
+mode = 
 
 .PHONY: up
 up: ## Start the container (ARGS: service)
@@ -33,11 +34,24 @@ log: ## View the log (ARGS: name)
 	@docker-compose logs ${name}
 .PHONY: test
 test:
+ifeq ($(mode), watch)
+	@docker-compose up -d db && \
+	until DB_HOST="127.0.0.1" python3 libs/db_check.py 2>/dev/null; do sleep 1; done && \
+	SEARCH_QUERY="test" SEARCH_LIMIT="10" DB_HOST="127.0.0.1" yarn test-watch && \
+	docker-compose stop db
+else ifeq ($(mode), coverage)
+	@docker-compose up -d db && \
+	until DB_HOST="127.0.0.1" python3 libs/db_check.py 2>/dev/null; do sleep 1; done && \
+	SEARCH_QUERY="test" SEARCH_LIMIT="10" DB_HOST="127.0.0.1" yarn test:coverage && \
+	docker-compose stop db || \
+	(docker-compose stop db && exit 1)
+else
 	@docker-compose up -d db && \
 	until DB_HOST="127.0.0.1" python3 libs/db_check.py 2>/dev/null; do sleep 1; done && \
 	SEARCH_QUERY="test" SEARCH_LIMIT="10" DB_HOST="127.0.0.1" yarn test && \
 	docker-compose stop db || \
 	(docker-compose stop db && exit 1)
+endif
 .PHONY: gh-action
 gh-action:
 	@docker-compose up -d db && \
