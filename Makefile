@@ -4,13 +4,17 @@ name =
 
 .PHONY: up
 up: ## Start the container (ARGS: service)
-	@docker-compose up -d ${service}
+ifeq ($(service), '')
+	@docker-compose up -d --scale gh-app=0
+else
+	@docker-compose up -d --scale gh-app=0 ${service}
+endif
 .PHONY: build-up
 build-up: ## Build the container and get started (ARGS: dist)
 ifeq ($(dist), alpine)
-	@DOCKER_FILE="Dockerfile.alpine" docker-compose up -d --build
+	@DOCKER_FILE="Dockerfile.alpine" docker-compose up -d --build --scale gh-app=0
 else
-	@docker-compose up -d --build
+	@docker-compose up -d --build --scale gh-app=0
 endif
 .PHONY: start
 start: ## Start an existing container as a service
@@ -27,6 +31,12 @@ down-rm: ## Stop the container and delete the container, network, volume, and im
 .PHONY: log
 log: ## View the log (ARGS: name)
 	@docker-compose logs ${name}
+.PHONY: gh-action
+gh-action:
+	@docker-compose up -d db && \
+	docker-compose up gh-app && \
+	docker-compose stop db && \
+	sudo chown -R ${USER}:${USER} ./docker
 
 .PHONY: help
 help: ## Display this help screen
