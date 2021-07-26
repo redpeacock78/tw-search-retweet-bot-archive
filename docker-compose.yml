@@ -32,6 +32,7 @@ services:
       - db
     tty: true
 
+  #Github Action用
   gh-app:
     image: ghcr.io/redpeacock78/tw-search-retweet-bot:latest
     container_name: gh_bot_app
@@ -52,6 +53,21 @@ services:
       SEARCH_QUERY: ${SEARCH_QUERY:- }
       SEARCH_LIMIT: ${SEARCH_LIMIT:- }
       GITHUB_ACTIONS: ${GITHUB_ACTIONS:-false}
+
+  #Test用
+  test-db:
+    image: mysql:8.0.19
+    container_name: test-mysql
+    ports:
+      - '33066:3306'
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: my_db
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+    volumes:
+      - ./docker/test/data:/var/lib/mysql
+    command: bash -c 'usermod -o -u 1000 mysql; groupmod -o -g 500 mysql; chown -R mysql:root /var/run/mysqld/; /entrypoint.sh mysqld --user=mysql --innodb_use_native_aio=0 --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci'
 
 networks:
   app-net:
