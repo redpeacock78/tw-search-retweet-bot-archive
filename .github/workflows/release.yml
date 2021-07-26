@@ -36,6 +36,7 @@ jobs:
         run: |
           hashtag="$(git rev-parse HEAD|cut -c 1-7)"
           echo "::set-output name=hashtag::${hashtag}"
+          GITHUB_REF=${{ github.ref }}
           echo "::set-output name=version::${GITHUB_REF#refs/tags/}"
       - name: Build and push
         uses: docker/build-push-action@v2
