@@ -1,64 +1,65 @@
-service = 
-dist =
-name =
-mode = 
+service := 
+dist :=
+name :=
+mode := 
 
-.PHONY: up
 up: ## Start the container (ARGS: service)
 ifeq ($(service), '')
-	@docker-compose up -d --scale gh-app=0
+	@docker-compose up -d --scale gh-app=0 --scale test-db=0
 else
-	@docker-compose up -d --scale gh-app=0 ${service}
+	@docker-compose up -d --scale gh-app=0 --scale test-db=0 ${service}
 endif
-.PHONY: build-up
+
 build-up: ## Build the container and get started (ARGS: dist)
 ifeq ($(dist), alpine)
-	@DOCKER_FILE="Dockerfile.alpine" docker-compose up -d --build --scale gh-app=0
+	@DOCKER_FILE="Dockerfile.alpine" \
+	docker-compose up -d --build --scale gh-app=0 --scale test-db=0
 else
-	@docker-compose up -d --build --scale gh-app=0
+	@docker-compose up -d --build --scale gh-app=0 --scale test-db=0
 endif
-.PHONY: start
+
 start: ## Start an existing container as a service
-	@docker-compose start
-.PHONY: stop
+	@docker-compose start ${service}
+
 stop: ## Stop running containers without deleting them
-	@docker-compose stop
-.PHONY: down
+	@docker-compose stop ${service}
+
 down: ## Stop the container and delete the container, network, volume, and image created in up
-	@docker-compose down
-.PHONY: down-rm
+	@docker-compose rm -fsv db app
+
 down-rm: ## Stop the container and delete the container, network, volume, and image created in up (including the named volume)
 	@docker-compose down --volume
-.PHONY: log
+
 log: ## View the log (ARGS: name)
 	@docker-compose logs ${name}
-.PHONY: test
+
 test:
 ifeq ($(mode), watch)
-	@docker-compose up -d db && \
+	@docker-compose up -d test-db && \
 	until DB_HOST="127.0.0.1" python3 libs/db_check.py 2>/dev/null; do sleep 1; done && \
 	SEARCH_QUERY="test" SEARCH_LIMIT="10" DB_HOST="127.0.0.1" yarn test-watch && \
-	docker-compose stop db
+	docker-compose rm -fsv test-db
 else ifeq ($(mode), coverage)
-	@docker-compose up -d db && \
+	@docker-compose up -d test-db && \
 	until DB_HOST="127.0.0.1" python3 libs/db_check.py 2>/dev/null; do sleep 1; done && \
 	SEARCH_QUERY="test" SEARCH_LIMIT="10" DB_HOST="127.0.0.1" yarn test:coverage && \
-	docker-compose stop db || \
-	(docker-compose stop db && exit 1)
+	docker-compose rm -fsv test-db || \
+	(docker-compose rm -fsv test-db && exit 1)
 else
-	@docker-compose up -d db && \
+	@docker-compose up -d test-db && \
 	until DB_HOST="127.0.0.1" python3 libs/db_check.py 2>/dev/null; do sleep 1; done && \
 	SEARCH_QUERY="test" SEARCH_LIMIT="10" DB_HOST="127.0.0.1" yarn test && \
-	docker-compose stop db || \
-	(docker-compose stop db && exit 1)
+	docker-compose rm -fsv test-db || \
+	(docker-compose rm -fsv test-db && exit 1)
 endif
-.PHONY: gh-action
+
 gh-action:
 	@docker-compose up -d db && \
 	docker-compose up gh-app && \
-	docker-compose stop db && \
+	docker-compose down --volume && \
 	sudo chown -R ${USER}:${USER} ./docker
 
-.PHONY: help
+.DEFAULT_GOAL := help
+.PHONY: up build-up start stop down down-rm log test gh-action help
 help: ## Display this help screen
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
