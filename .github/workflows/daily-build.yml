@@ -1,4 +1,4 @@
-name: Docker Publish
+name: Dairy Docker Build
 on:
   push:
     branches:
@@ -46,6 +46,6 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:latest
+            ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:dairy
             ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ steps.latest_tag.outputs.hashtag }}
             ghcr.io/${{ github.repository_owner }}/${{ env.IMAGE_NAME }}:${{ steps.latest_tag.outputs.dairy }}
