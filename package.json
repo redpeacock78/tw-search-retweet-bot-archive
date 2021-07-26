@@ -32,7 +32,7 @@
     "build": "yarn lint-fix && tsc -p tsconfig.json",
     "start": "node dist/main.js",
     "test": "jest",
-    "test-watch": "jest --watch",
+    "test-watch": "jest --watchAll",
     "test:coverage": "jest --coverage"
   }
 }
