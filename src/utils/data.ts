@@ -4,6 +4,7 @@ import mysql = require('mysql2/promise');
 //データベースの設定
 const db_setting = {
   host: process.env.DB_HOST ? process.env.DB_HOST : 'mysql_container',
+  port: process.env.DB_HOST ? 33066 : 3306,
   user: 'docker',
   password: 'docker',
   database: 'my_db',
