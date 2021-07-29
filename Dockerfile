@@ -7,7 +7,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
   curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
   echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
   apt-get update && \
-  apt-get install -yq --no-install-recommends git cron nodejs yarn python3-distutils && \
+  apt-get install -yq --no-install-recommends git cron make nodejs yarn python3-distutils && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* && \
   curl -sL https://bootstrap.pypa.io/get-pip.py | python3 -
@@ -15,9 +15,13 @@ RUN DEBIAN_FRONTEND=noninteractive \
 WORKDIR /bot
 COPY ./ ./
 RUN pip install -r requirements.txt && \
-  pip cache purge && \
   yarn install && \
-  yarn build && \
-  yarn cache clean
+  make build && \
+  pip cache purge && \
+  yarn cache clean && \
+  rm -rf ./node_modules /root/.pkg-cache && \
+  apt-get remove --purge -y make nodejs yarn && \
+  apt-get autoremove -y && \
+  apt-get clean
 
 ENTRYPOINT [ "./entrypoint.sh" ]

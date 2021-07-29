@@ -26,8 +26,7 @@ services:
       - app-net
     volumes:
       - .:/bot
-      - /bot/dist
-      - /bot/node_modules
+      - /bot/build
     depends_on:
       - db
     tty: true
@@ -40,8 +39,7 @@ services:
       - app-net
     volumes:
       - .:/bot
-      - /bot/dist
-      - /bot/node_modules
+      - /bot/build
     depends_on:
       - db
     tty: true

@@ -3,6 +3,7 @@
 docs
 dist
 test
+build
 docker
 coverage
 node_modules
@@ -15,4 +16,3 @@ Dockerfile.alpine
 docker-compose.yml
 jest.config.js
 README.md
-Makefile

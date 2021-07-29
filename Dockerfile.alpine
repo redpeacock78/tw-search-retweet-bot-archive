@@ -1,15 +1,18 @@
 FROM alpine:3.14.0
 
-RUN apk --update --no-cache add g++ git curl bash nodejs yarn python3-dev py3-pip py-pandas && \
+RUN apk add --update --no-cache --virtual .builder nodejs yarn make && \
+  apk --update --no-cache add g++ git curl bash python3-dev py3-pip py-pandas && \
   pip3 install --upgrade pip && \
   pip cache purge
 
 WORKDIR /bot
 COPY ./ ./
 RUN pip install -r requirements.txt && \
-  pip cache purge && \
   yarn install && \
-  yarn build && \
-  yarn cache clean
+  make build && \
+  pip cache purge && \
+  yarn cache clean && \
+  rm -rf ./node_modules /root/.pkg-cache && \
+  apk del --purge .builder
 
 ENTRYPOINT [ "./entrypoint.sh" ]
