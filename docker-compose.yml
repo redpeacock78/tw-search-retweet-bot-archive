@@ -33,7 +33,7 @@ services:
 
   #Github Action用
   gh-app:
-    image: ghcr.io/redpeacock78/tw-search-retweet-bot:v1.1.1
+    image: ghcr.io/redpeacock78/tw-search-retweet-bot:v1.1.2
     container_name: gh_bot_app
     networks:
       - app-net
