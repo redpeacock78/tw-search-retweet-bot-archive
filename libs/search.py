@@ -11,7 +11,7 @@ result = []
 
 def scrape():
     limit = int(os.getenv('SEARCH_LIMIT'))
-    queries = os.getenv('SEARCH_QUERY').split('\n')
+    queries = os.getenv('SEARCH_QUERY').replace('\\n', '\n').split('\n')
     for query in queries:
         config = twint.Config()
         config.Limit = limit
