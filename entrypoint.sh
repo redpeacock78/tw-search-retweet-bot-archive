@@ -24,7 +24,7 @@ function main() {
               crond -l 8
           fi
       fi &&
-        yarn start
+        ./build/main
     }
 }
 
