@@ -1,5 +1,7 @@
 import * as data from '../src/utils/data';
 
+jest.setTimeout(100000);
+
 test('Test src/utils/data.ts', async (): Promise<void> => {
   await data().then((i: string[]): void => {
     //配列かどうか
