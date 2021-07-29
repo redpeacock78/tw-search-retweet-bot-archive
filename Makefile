@@ -1,7 +1,7 @@
 service := 
 dist :=
 name :=
-mode := 
+mode :=
 
 up: ## Start the container (ARGS: service)
 ifeq ($(service), '')
@@ -35,23 +35,27 @@ log: ## View the log (ARGS: name)
 
 test:
 ifeq ($(mode), watch)
-	@docker-compose up -d test-db && \
+	@(docker-compose up -d test-db && \
 	until DB_HOST="127.0.0.1" python3 libs/db_check.py 2>/dev/null; do sleep 1; done && \
-	SEARCH_QUERY="test" SEARCH_LIMIT="10" DB_HOST="127.0.0.1" yarn test-watch && \
+	DB_HOST="127.0.0.1" yarn test-watch) && \
 	docker-compose rm -fsv test-db
 else ifeq ($(mode), coverage)
-	@docker-compose up -d test-db && \
+	@(docker-compose up -d test-db && \
 	until DB_HOST="127.0.0.1" python3 libs/db_check.py 2>/dev/null; do sleep 1; done && \
-	SEARCH_QUERY="test" SEARCH_LIMIT="10" DB_HOST="127.0.0.1" yarn test:coverage && \
-	docker-compose rm -fsv test-db || \
+	DB_HOST="127.0.0.1" yarn test:coverage && \
+	docker-compose rm -fsv test-db) || \
 	(docker-compose rm -fsv test-db && exit 1)
 else
-	@docker-compose up -d test-db && \
+	@(docker-compose up -d test-db && \
 	until DB_HOST="127.0.0.1" python3 libs/db_check.py 2>/dev/null; do sleep 1; done && \
-	SEARCH_QUERY="test" SEARCH_LIMIT="10" DB_HOST="127.0.0.1" yarn test && \
+	DB_HOST="127.0.0.1" yarn test) && \
 	docker-compose rm -fsv test-db || \
 	(docker-compose rm -fsv test-db && exit 1)
 endif
+
+build:
+	@yarn build && \
+	yarn run pkg dist/main.js -o build/main
 
 gh-action:
 	@docker-compose up -d db && \
@@ -60,6 +64,6 @@ gh-action:
 	sudo chown -R ${USER}:${USER} ./docker
 
 .DEFAULT_GOAL := help
-.PHONY: up build-up start stop down down-rm log test gh-action help
+.PHONY: up build-up start stop down down-rm log test build gh-action help
 help: ## Display this help screen
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
