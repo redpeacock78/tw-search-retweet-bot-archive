@@ -27,7 +27,7 @@ services:
     volumes:
       - .:/bot
       - /bot/build
-      - ./entrypoint.sh:/dev/null
+      - script:/bot/script
     depends_on:
       - db
     tty: true
@@ -41,7 +41,7 @@ services:
     volumes:
       - .:/bot
       - /bot/build
-      - ./entrypoint.sh:/dev/null
+      - script:/bot/script
     depends_on:
       - db
     tty: true
@@ -72,3 +72,7 @@ services:
 networks:
   app-net:
     driver: bridge
+
+volumes:
+  script:
+    driver: local
