@@ -15,7 +15,10 @@
 ## 🛠 使用方法
 ### 🀄️ 方法1: Github Actionsで動作させる (これが最も簡単)
 1. このリポジトリをフォークします。
+![Fork](https://i.imgur.com/4bcu1ws.jpg)
 2. フォークされたリポジトリの`Settings` -> `Secrets`に、以下の`秘密の環境変数`を設定してください。
+![Secret_1](https://imgur.com/z1g8Qz4.jpg)  
+![Secret_2](https://imgur.com/EDHEHwI.jpg)  
     <details><summary><b>秘密の環境変数一覧</b></summary><div>
 
     |変数名|内容|デフォルト値|必須|注釈|
@@ -28,7 +31,9 @@
     |`SEARCH_LIMIT`|検索対象となる最大件数|100|いいえ|デフォルトでは、100件のアイテムを取得するように設定されています(APIの制限により、100件以上の数値を設定することは推奨されません)。|
     </div></details>
 3. アクションの有効化に同意します。
+![Enable_Actions](https://imgur.com/AnQxsp2.jpg)
 4. アクションの有効化に同意した後、スケジュールされたワークフロー(ワークフローの定期実行)を再度有効にします。 
+![Re-enable_workflow](https://imgur.com/GHdlfpA.jpg)
     - ***[公式ドキュメント](https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow)によると、パブリックリポジトリがフォークされると、スケジュールされたワークフローはデフォルトで無効になります。そのため、フォークされたリポジトリに対してGithub Actionsの定期実行を有効にするためには、この手順が必要となります。***
 5. 以上の手順を完了すると、Github Actionsはデフォルトで10分ごとにワークフローを実行するようにホストされます。
 

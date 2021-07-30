@@ -13,8 +13,11 @@ Sample: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsb
 
 ## 🛠 Usage
 ### 🀄️ Way 1: Runs on Github Actions (This is the easiest)
-1. Fork this repository.
-2. Add the following `Secret Environment Values` to `Settings`->`Secrets` in the forked repository.
+1. Fork this repository.  
+![Fork](https://i.imgur.com/4bcu1ws.jpg)
+2. Add the following `Secret Environment Values` to `Settings`->`Secrets` in the forked repository.  
+![Secret_1](https://imgur.com/z1g8Qz4.jpg)  
+![Secret_2](https://imgur.com/EDHEHwI.jpg)  
     <details><summary><b>Secret Environment Values List</b></summary><div>
     
     |Variable name|Meaning|Default|Required|Notes|
@@ -28,7 +31,9 @@ Sample: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsb
     </div></details>
 
 3. Agree to enable Actions.
+![Enable_Actions](https://imgur.com/AnQxsp2.jpg)
 4. After agreeing to activate the action, re-enable the scheduled workflow (the scheduled task of the workflow).  
+![Re-enable_workflow](https://imgur.com/GHdlfpA.jpg)
     - ***According to [the official documentation](https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow), when a public repository is forked, scheduled workflows are disabled by default. Therefore, in order to enable Github Actions timed tasks for forked repositories, this step is required.***
 5. Once you have completed the above steps, Github Actions will host the workflow to run every 10 minutes by default.
 ### 🎴 Way 2: Runs on a self-hosted server
