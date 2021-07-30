@@ -24,4 +24,4 @@ RUN pip install -r requirements.txt && \
   apt-get autoremove -y && \
   apt-get clean
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+ENTRYPOINT [ "./script/entrypoint.sh" ]

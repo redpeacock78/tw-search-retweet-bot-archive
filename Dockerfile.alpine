@@ -15,4 +15,4 @@ RUN pip install -r requirements.txt && \
   rm -rf ./node_modules /root/.pkg-cache && \
   apk del --purge .builder
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+ENTRYPOINT [ "./script/entrypoint.sh" ]
