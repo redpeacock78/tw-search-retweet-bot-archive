@@ -1,6 +1,6 @@
-import * as data from '../utils/data';
-import * as sleep from '../utils/sleep';
-import * as retweet from '../utils/retweet';
+import * as data from '#utils/data';
+import * as sleep from '#utils/sleep';
+import * as retweet from '#utils/retweet';
 
 const core: () => Promise<void> = async (): Promise<void> => {
   console.log('Running...');
@@ -29,8 +29,8 @@ const core: () => Promise<void> = async (): Promise<void> => {
         console.error(JSON.stringify(logs, null, ' '));
       }
     })
-    .catch((err: Error): void => {
-      console.error(err);
+    .catch((err: Error): never => {
+      throw new Error(err as unknown as string);
     });
 };
 

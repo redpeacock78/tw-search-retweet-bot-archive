@@ -1,4 +1,4 @@
-import * as core from '../core/core';
+import * as core from '#core/core';
 import cron = require('node-cron');
 
 //一定間隔で実行

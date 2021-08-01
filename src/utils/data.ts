@@ -1,23 +1,20 @@
-import * as db from './db';
-import * as scrape from './scrape';
+import * as db from '#tools/db';
+import * as arr from '#tools/arr';
+import * as scrape from '#tools/scrape';
 
-const data: () => Promise<string[] | Error> = async (): Promise<
-  string[] | Error
-> => {
+const data: () => Promise<string[]> = async (): Promise<string[]> => {
   try {
     //データベース側のデータと取得したデータの差分を取得
     const db_data: string[] = (await (await db()).read()) as string[];
-    const scrape_data: string[] = await scrape();
-    const diff_data: string[] = scrape_data.filter(
-      (i: string): boolean => db_data.indexOf(i) === -1
-    );
+    const scrape_data: string[] = arr.dedup<string>(await scrape());
+    const diff_data: string[] = arr.diff<string>(scrape_data, db_data);
     //差分データが存在すればデータの書き込み
-    if (diff_data.length !== 0) {
+    if (diff_data.length) {
       await (await db()).write(diff_data);
     }
     return diff_data;
   } catch (e: unknown) {
-    return e as Error;
+    throw new Error(e as string);
   }
 };
 
