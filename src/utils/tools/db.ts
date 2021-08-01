@@ -1,7 +1,7 @@
 import mysql = require('mysql2/promise');
 
 //データベースの設定
-const db_setting = {
+const db_setting: mysql.ConnectionOptions = {
   host: process.env.DB_HOST ? process.env.DB_HOST : 'mysql_container',
   port: process.env.DB_HOST ? 33066 : 3306,
   user: 'docker',
@@ -9,7 +9,10 @@ const db_setting = {
   database: 'my_db',
 };
 
-const db = async () => {
+const db: () => Promise<{
+  read: () => Promise<string[] | Error>;
+  write: (data: string[]) => Promise<string[] | Error>;
+}> = async () => {
   const database: mysql.Connection = await mysql.createConnection(db_setting);
   return {
     read: async (): Promise<string[] | Error> => {
