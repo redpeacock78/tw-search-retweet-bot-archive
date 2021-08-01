@@ -8,10 +8,14 @@
   ],
   "compilerOptions": {
     "outDir": "dist/",
+    "baseUrl": "./src",
+    "paths": {
+      "#core/*": ["core/*"],
+      "#utils/*": ["utils/*"],
+      "#tools/*": ["utils/tools/*"],
+      "#controller/*": ["controller/*"]
+    },
     "module": "commonjs",
-    "target": "ES2019",
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true
+    "target": "ES2019"
   }
 }
