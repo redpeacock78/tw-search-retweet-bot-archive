@@ -1,15 +1,35 @@
 # tw-search-retweet-bot
 
-[![GitHub](https://img.shields.io/github/license/redpeacock78/tw-search-retweet-bot)](https://github.com/redpeacock78/tw-search-retweet-bot/blob/master/LICENCE) [![Node](https://img.shields.io/badge/node-%3E%3D%2014.17.1-brightgreen)](https://nodejs.org/ja/) [![python](https://img.shields.io/badge/python-%3E%3D%203.7.3-blue)](https://www.python.org/) [![codecov](https://codecov.io/gh/redpeacock78/tw-search-retweet-bot/branch/master/graph/badge.svg?token=OF4BLGPS8Z)](https://codecov.io/gh/redpeacock78/tw-search-retweet-bot) [![GitHub last commit](https://img.shields.io/github/last-commit/redpeacock78/tw-search-retweet-bot)](https://github.com/redpeacock78/tw-search-retweet-bot/commits/master)  
+[![GitHub](https://img.shields.io/github/license/redpeacock78/tw-search-retweet-bot)](https://github.com/redpeacock78/tw-search-retweet-bot/blob/master/LICENCE) [![Node](https://img.shields.io/badge/node-%3E%3D%2014.17.1-brightgreen)](https://nodejs.org/ja/) [![python](https://img.shields.io/badge/python-%3E%3D%203.7.3-blue)](https://www.python.org/) [![GitHub last commit](https://img.shields.io/github/last-commit/redpeacock78/tw-search-retweet-bot)](https://github.com/redpeacock78/tw-search-retweet-bot/commits/master)  
+[![Release](https://github.com/redpeacock78/tw-search-retweet-bot/actions/workflows/release.yml/badge.svg)](https://github.com/redpeacock78/tw-search-retweet-bot/actions/workflows/release.yml) [![Daily Docker Build](https://github.com/redpeacock78/tw-search-retweet-bot/actions/workflows/daily-build.yml/badge.svg)](https://github.com/redpeacock78/tw-search-retweet-bot/actions/workflows/daily-build.yml)  
+[![codecov](https://codecov.io/gh/redpeacock78/tw-search-retweet-bot/branch/master/graph/badge.svg?token=OF4BLGPS8Z)](https://codecov.io/gh/redpeacock78/tw-search-retweet-bot) [![Maintainability](https://api.codeclimate.com/v1/badges/062235405bc7d1f73e76/maintainability)](https://codeclimate.com/github/redpeacock78/tw-search-retweet-bot/maintainability) [![DeepScan grade](https://deepscan.io/api/teams/13696/projects/18142/branches/438023/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=13696&pid=18142&bid=438023)    
 
-**ドキュメント**: [English version](https://github.com/redpeacock78/tw-search-retweet-bot/blob/master/README.md) | 日本語
+**ドキュメント**: [English version](https://github.com/redpeacock78/tw-search-retweet-bot/blob/master/README.md) | 日本語  
+
+## 📖 目次
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+- [📄 これは何?](#-%E3%81%93%E3%82%8C%E3%81%AF%E4%BD%95)
+- [🛠 使用方法](#%F0%9F%9B%A0-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
+  - [🀄️ 方法1: Github Actionsで動作させる (これが最も簡単)](#%EF%B8%8F-%E6%96%B9%E6%B3%951-github-actions%E3%81%A7%E5%8B%95%E4%BD%9C%E3%81%95%E3%81%9B%E3%82%8B-%E3%81%93%E3%82%8C%E3%81%8C%E6%9C%80%E3%82%82%E7%B0%A1%E5%8D%98)
+  - [🎴 方法2: 自前のサーバーで動作させる](#-%E6%96%B9%E6%B3%952-%E8%87%AA%E5%89%8D%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E5%8B%95%E4%BD%9C%E3%81%95%E3%81%9B%E3%82%8B)
+- [🧑‍💻 使用技術](#%E2%80%8D-%E4%BD%BF%E7%94%A8%E6%8A%80%E8%A1%93)
+- [❤ 寄付・支援](#%E2%9D%A4-%E5%AF%84%E4%BB%98%E3%83%BB%E6%94%AF%E6%8F%B4)
+- [🚀 コントリビューション](#-%E3%82%B3%E3%83%B3%E3%83%88%E3%83%AA%E3%83%93%E3%83%A5%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3)
+- [👾 作者](#-%E4%BD%9C%E8%80%85)
+- [🎉 謝辞](#-%E8%AC%9D%E8%BE%9E)
+  - [📚 ライブラリ](#-%E3%83%A9%E3%82%A4%E3%83%96%E3%83%A9%E3%83%AA)
+  - [🎁 感謝](#-%E6%84%9F%E8%AC%9D)
+- [🥝 ライセンス](#-%E3%83%A9%E3%82%A4%E3%82%BB%E3%83%B3%E3%82%B9)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 
 ## 📄 これは何?
 **🤖 Twitterで指定した検索条件にヒットしたツイートをリツイートするBOTを作成します🐤**  
   
 例: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsbot)  
-
 
 
 ## 🛠 使用方法
@@ -133,7 +153,7 @@
 
 
 ## 🎉 謝辞
-### 📕 ライブラリ
+### 📚 ライブラリ
 - [twint](https://github.com/twintproject/twint) (Twitterの情報取得はこのライブラリに依存しています)
 - [node-twitter](https://github.com/desmondmorris/node-twitter) (Twitter APIの操作はこのライブラリに依存しています)
 ### 🎁 感謝
