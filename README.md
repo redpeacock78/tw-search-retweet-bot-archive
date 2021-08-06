@@ -14,7 +14,7 @@
 - [🛠 Usage](#-usage)
   - [🀄️ Way 1: Runs on Github Actions (This is the easiest)](#-way-1-runs-on-github-actions-this-is-the-easiest)
   - [🎴 Way 2: Runs on a self-hosted server](#-way-2-runs-on-a-self-hosted-server)
-- [🧑‍💻 Technology used](#technology-used)
+- [🧑‍💻 Technology used](#-technology-used)
 - [❤ Donate/Support](#-donatesupport)
 - [🚀 Contribution](#-contribution)
 - [👾 Author](#-author)
