@@ -18,34 +18,37 @@ jobs:
             const runed = await github.actions.listWorkflowRuns({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              workflow_id: "run.yml",
-              status:"in_progress"
+              workflow_id: "run.yml"
             });
-            return runed.data.total_count
+            return runed.data.workflow_runs.map(
+              i => i.status
+            ).filter(
+              i => i === 'in_progress'
+            ).length;
           result-encoding: string
       - uses: actions/checkout@v2
-        if: steps.running_count.outputs.result=='1'
+        if: ${{ steps.running_count.outputs.result == '1' }}
       - name: Get random hash
-        if: steps.running_count.outputs.result=='1'
+        if: ${{ steps.running_count.outputs.result == '1' }}
         id: hash
         run: |
           hash="$(sha256sum <(openssl rand -base64 10)|awk '{print $1}')"
           echo "::set-output name=hash::${hash}"
       - uses: actions/cache@v2
-        if: steps.running_count.outputs.result=='1'
+        if: ${{ steps.running_count.outputs.result == '1' }}
         with:
           path: ./docker
           key: tw_db-${{ steps.hash.outputs.hash }}
           restore-keys: |
             tw_db-
       - name: Judge SEARCH_LIMIT
-        if: steps.running_count.outputs.result=='1'
+        if: ${{ steps.running_count.outputs.result == '1' }}
         id: search_limit
         run: |
             default="${{ secrets.SEARCH_LIMIT }}"
             echo "::set-output name=value::${default:-100}"
       - name: Run
-        if: steps.running_count.outputs.result=='1'
+        if: ${{ steps.running_count.outputs.result == '1' }}
         run: make gh-action
         env:
           CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
