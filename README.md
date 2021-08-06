@@ -11,11 +11,11 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [📄 About](#-about)
-- [🛠 Usage](#%F0%9F%9B%A0-usage)
-  - [🀄️ Way 1: Runs on Github Actions (This is the easiest)](#%EF%B8%8F-way-1-runs-on-github-actions-this-is-the-easiest)
+- [🛠 Usage](#-usage)
+  - [🀄️ Way 1: Runs on Github Actions (This is the easiest)](#-way-1-runs-on-github-actions-this-is-the-easiest)
   - [🎴 Way 2: Runs on a self-hosted server](#-way-2-runs-on-a-self-hosted-server)
-- [🧑‍💻 Technology used](#%E2%80%8D-technology-used)
-- [❤ Donate/Support](#%E2%9D%A4-donatesupport)
+- [🧑‍💻 Technology used](#technology-used)
+- [❤ Donate/Support](#-donatesupport)
 - [🚀 Contribution](#-contribution)
 - [👾 Author](#-author)
 - [🎉 Acknowledgements](#-acknowledgements)
