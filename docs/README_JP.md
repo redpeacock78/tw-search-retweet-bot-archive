@@ -12,7 +12,7 @@
 
 - [📄 これは何?](#-%E3%81%93%E3%82%8C%E3%81%AF%E4%BD%95)
 - [🛠 使用方法](#-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
-  - [🀄️ 方法1: Github Actionsで動作させる (これが最も簡単)](#-%E6%96%B9%E6%B3%951-github-actions%E3%81%A7%E5%8B%95%E4%BD%9C%E3%81%95%E3%81%9B%E3%82%8B-%E3%81%93%E3%82%8C%E3%81%8C%E6%9C%80%E3%82%82%E7%B0%A1%E5%8D%98)
+  - [🀄️ 方法1: Github Actionsで動作させる (これが最も簡単)](#%EF%B8%8F-%E6%96%B9%E6%B3%951-github-actions%E3%81%A7%E5%8B%95%E4%BD%9C%E3%81%95%E3%81%9B%E3%82%8B-%E3%81%93%E3%82%8C%E3%81%8C%E6%9C%80%E3%82%82%E7%B0%A1%E5%8D%98)
   - [🎴 方法2: 自前のサーバーで動作させる](#-%E6%96%B9%E6%B3%952-%E8%87%AA%E5%89%8D%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%81%A7%E5%8B%95%E4%BD%9C%E3%81%95%E3%81%9B%E3%82%8B)
 - [🧑‍💻 使用技術](#-%E4%BD%BF%E7%94%A8%E6%8A%80%E8%A1%93)
 - [❤ 寄付・支援](#-%E5%AF%84%E4%BB%98%E6%94%AF%E6%8F%B4)
@@ -56,6 +56,34 @@
 ![Re-enable_workflow](https://imgur.com/GHdlfpA.jpg)
     - ***[公式ドキュメント](https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow)によると、パブリックリポジトリがフォークされると、スケジュールされたワークフローはデフォルトで無効になります。そのため、フォークされたリポジトリに対してGithub Actionsの定期実行を有効にするためには、この手順が必要となります。***
 5. 以上の手順を完了すると、Github Actionsはデフォルトで10分ごとにワークフローを実行するようにホストされます。
+- <details><summary><b>応用</b></summary>
+
+  > Github Acrionsのcronはあくまで動作が開始する時間間隔を保証するものではなく、動作開始のキューが予約される時間間隔を保証するものなので様々な要因によって実行される時間は前後します。そのため、より正確な時間間隔で動作させたい場合の対処法を紹介します。
+  > ```bash
+  > # API
+  > ## ${owner}: ユーザー名
+  > ## ${repo}: リポジトリの名前
+  > https://api.github.com/repos/${owner}/${repo}/dispatches
+  >
+  > # Headers
+  > ## Key: Value
+  > ## ${github_token}: 自身が取得したtoken
+  > Accept: application/vnd.github.everest-preview+json
+  > Authorization: token ${github_token}
+  >
+  > # Request method
+  > POST
+  > # Request body
+  > { "event_type": "tw-webhook" }
+  > ```
+  > 上記に示したAPIをお好みの方法で一定間隔でアクセスすることによって、正確な間隔で動作させることが可能になります。  
+  > 方法としては下記のサービスなどの利用をお勧めします。  
+  > - [IFTTT](https://ifttt.com/)
+  > - [Zapier](https://zapier.com/)
+  > - [Power Automate](https://flow.microsoft.com/ja-jp/)
+  > - [cron-job.org](https://cron-job.org/en/)
+  > - [Zoho Flow](https://www.zoho.com/flow/)
+  </details>
 
 ### 🎴 方法2: 自前のサーバーで動作させる
 - #### 📦 依存関係
@@ -65,7 +93,7 @@
   - [GNU Make](https://www.gnu.org/software/make/)
 
 - #### ⚙ 設定
-  このリポジトリを`git clone`するか、[ダウンロード](https://github.com/redpeacock78/tw-search-retweet-bot/archive/refs/heads/master.zip)して解凍してください。  
+  このリポジトリを`git clone`するか、[ダウンロード](https://github.com/redpeacock78/tw-search-retweet-bot/releases/latest)して解凍してください。  
 
   プロジェクトのルートディレクトリに`.env`ファイルを作成し、以下のように各種設定を記述します。
   ```bash

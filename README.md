@@ -12,7 +12,7 @@
 
 - [📄 About](#-about)
 - [🛠 Usage](#-usage)
-  - [🀄️ Way 1: Runs on Github Actions (This is the easiest)](#-way-1-runs-on-github-actions-this-is-the-easiest)
+  - [🀄️ Way 1: Runs on Github Actions (This is the easiest)](#%EF%B8%8F-way-1-runs-on-github-actions-this-is-the-easiest)
   - [🎴 Way 2: Runs on a self-hosted server](#-way-2-runs-on-a-self-hosted-server)
 - [🧑‍💻 Technology used](#-technology-used)
 - [❤ Donate/Support](#-donatesupport)
@@ -56,6 +56,35 @@ Sample: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsb
 ![Re-enable_workflow](https://imgur.com/GHdlfpA.jpg)
     - ***According to [the official documentation](https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow), when a public repository is forked, scheduled workflows are disabled by default. Therefore, in order to enable Github Actions timed tasks for forked repositories, this step is required.***
 5. Once you have completed the above steps, Github Actions will host the workflow to run every 10 minutes by default.
+- <details><summary><b>Advanced</b></summary>
+
+  > Github Acrions cron does not guarantee the time interval at which the operation starts, but rather the time interval at which the queue to start the operation is reserved, so the execution time may vary depending on various factors. Therefore, if you want to run at a more accurate time interval, here is how to deal with it.
+  > ```bash
+  > # API
+  > ## ${owner}: Username
+  > ## ${repo}: Repository name
+  > https://api.github.com/repos/${owner}/${repo}/dispatches
+  >
+  > # Headers
+  > ## Key: Value
+  > ## ${github_token}: The token you obtained
+  > Accept: application/vnd.github.everest-preview+json
+  > Authorization: token ${github_token}
+  >
+  > # Request method
+  > POST
+  > # Request body
+  > { "event_type": "tw-webhook" }
+  > ```
+  > By accessing the API shown above at regular intervals in the way you prefer, you can make them work at precise intervals.  
+  > We recommend using the following services for this purpose.
+  > - [IFTTT](https://ifttt.com/)
+  > - [Zapier](https://zapier.com/)
+  > - [Power Automate](https://flow.microsoft.com/ja-jp/)
+  > - [cron-job.org](https://cron-job.org/en/)
+  > - [Zoho Flow](https://www.zoho.com/flow/)
+  </details>
+
 ### 🎴 Way 2: Runs on a self-hosted server
 - #### 📦 Dependencies  
   ***Caution: To run the program, you will need the following items, so please install them beforehand***
@@ -64,8 +93,8 @@ Sample: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsb
   - [GNU Make](https://www.gnu.org/software/make/)
 
 - #### ⚙ Setup
-  You can either `git clone` this repository or [download](https://github.com/redpeacock78/tw-search-retweet-bot/archive/refs/heads/master.zip) and unzip it.  
-  Create an `.env` file in the root directory and write the various settings as follows
+  You can either `git clone` this repository or [download](https://github.com/redpeacock78/tw-search-retweet-bot/releases/latest) and unzip it.  
+  Create an `.env` file in the root directory and write the various settings as follows.
   ```bash
   # Twitter API Key
   CONSUMER_KEY='xxxxxxxxxxxxxxxxxxxxx'
