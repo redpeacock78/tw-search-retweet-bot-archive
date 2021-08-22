@@ -15,7 +15,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
 WORKDIR /bot
 COPY ./ ./
 RUN pip install -r requirements.txt && \
-  yarn install && \
+  yarn install --network-concurrency 1 && \
   make build && \
   pip cache purge && \
   yarn cache clean && \
