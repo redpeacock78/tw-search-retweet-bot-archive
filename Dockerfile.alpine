@@ -8,7 +8,7 @@ RUN apk add --update --no-cache --virtual .builder nodejs yarn make && \
 WORKDIR /bot
 COPY ./ ./
 RUN pip install -r requirements.txt && \
-  yarn install && \
+  yarn install --network-concurrency 1 && \
   make build && \
   pip cache purge && \
   yarn cache clean && \
