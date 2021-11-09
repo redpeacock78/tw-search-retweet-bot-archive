@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Update log
       run: |
-        git switch revive
+        git checkout revive
         date >> update.txt
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
