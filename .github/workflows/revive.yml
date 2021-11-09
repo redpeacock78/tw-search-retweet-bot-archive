@@ -1,0 +1,20 @@
+name: Revive
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 * */1 *
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Update log
+      run: |
+        git switch revive
+        date >> update.log
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        branch: revive
+        commit_message: Automated Change
