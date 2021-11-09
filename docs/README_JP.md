@@ -52,7 +52,8 @@
     </div></details>
 3. アクションの有効化に同意します。
 ![Enable_Actions](https://imgur.com/AnQxsp2.jpg)
-4. アクションの有効化に同意した後、スケジュールされたワークフロー(ワークフローの定期実行)を再度有効にします。 
+4. アクションの有効化に同意した後、スケジュールされたワークフロー(ワークフローの定期実行)を再度有効にします。  
+⚠️ **"tw-search-retweet-bot"** と **"Revive"** の項目を有効化してください。  
 ![Re-enable_workflow](https://imgur.com/GHdlfpA.jpg)
     - ***[公式ドキュメント](https://docs.github.com/en/actions/managing-workflow-runs/disabling-and-enabling-a-workflow)によると、パブリックリポジトリがフォークされると、スケジュールされたワークフローはデフォルトで無効になります。そのため、フォークされたリポジトリに対してGithub Actionsの定期実行を有効にするためには、この手順が必要となります。***
 5. 以上の手順を完了すると、Github Actionsはデフォルトで10分ごとにワークフローを実行するようにホストされます。
