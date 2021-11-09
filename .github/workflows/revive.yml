@@ -13,7 +13,7 @@ jobs:
     - name: Update log
       run: |
         git switch revive
-        date >> update.log
+        date >> update.txt
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         branch: revive
