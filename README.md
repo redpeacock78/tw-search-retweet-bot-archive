@@ -59,7 +59,7 @@ Sample: [パクリ商品bot(@ImitProductsbot)](https://twitter.com/ImitProductsb
 5. Once you have completed the above steps, Github Actions will host the workflow to run every 10 minutes by default.
 - <details><summary><b>Advanced</b></summary>
 
-  > Github Acrions cron does not guarantee the time interval at which the operation starts, but rather the time interval at which the queue to start the operation is reserved, so the execution time may vary depending on various factors. Therefore, if you want to run at a more accurate time interval, here is how to deal with it.
+  > Github Acrions scheduled does not guarantee the time interval at which the operation starts, but rather the time interval at which the queue to start the operation is reserved, so the execution time may vary depending on various factors. Therefore, if you want to run at a more accurate time interval, here is how to deal with it.
   > ```bash
   > # API
   > ## ${owner}: Username
