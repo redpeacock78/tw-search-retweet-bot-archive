@@ -14,7 +14,7 @@ jobs:
         fetch-depth: 0
     - name: Update log
       run: date >> log/revive.log
-    - uses: Daily Update Log
+    - name: Daily Update Log
       run: |
         git config --global user.name 'Revive Checker'
         git config --global user.email 'revive@daily-stats-log.com'
