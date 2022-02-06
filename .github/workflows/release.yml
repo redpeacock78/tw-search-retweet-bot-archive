@@ -7,6 +7,9 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     env:
       TZ: 'Asia/Tokyo'
       IMAGE_NAME: tw-search-retweet-bot
