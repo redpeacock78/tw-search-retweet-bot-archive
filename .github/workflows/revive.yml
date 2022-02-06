@@ -18,6 +18,6 @@ jobs:
       run: |
         git config --global user.name 'Revive Checker'
         git config --global user.email 'revive@daily-stats-log.com'
-        git add -A --force logs/
+        git add -A --force log/
         git commit -am '[Automated] Update Daily Logs'
         git push
