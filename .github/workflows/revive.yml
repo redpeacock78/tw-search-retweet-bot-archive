@@ -13,10 +13,11 @@ jobs:
       with:
         fetch-depth: 0
     - name: Update log
+      run: date >> logs/revive.log
+    - uses: Daily Update Log
       run: |
-        git checkout revive
-        date >> update.txt
-    - uses: stefanzweifel/git-auto-commit-action@v4
-      with:
-        branch: revive
-        commit_message: Automated Change
+        git config --global user.name 'Revive Checker'
+        git config --global user.email 'revive@daily-stats-log.com'
+        git add -A --force logs/
+        git commit -am '[Automated] Update Daily Logs'
+        git push
