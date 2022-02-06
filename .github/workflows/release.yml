@@ -44,7 +44,7 @@ jobs:
           echo "::set-output name=hashtag::${hashtag}"
           echo "::set-output name=version::${version}"
       - name: Build and push
-        uses: docker/build-push-action@v2
+        uses: docker/build-push-action@v2.9.0
         with:
           context: .
           push: true
