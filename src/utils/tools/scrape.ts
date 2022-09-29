@@ -40,9 +40,7 @@ const scrape: () => Promise<string[]> = async (): Promise<string[]> => {
       const py: (py_script: string, py_option: py_option) => Promise<string[]> =
         util.promisify(PythonShell.run);
       const result: string[] = await py('libs/search.py', search_criteria).then(
-        (i: string[]): string[] => {
-          return i.reverse();
-        }
+        (i: string[]): string[] => i !== null ? i.reverse() : []
       );
       return result;
     }
