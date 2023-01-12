@@ -10,12 +10,12 @@ jobs:
     name: Run
     steps:
       - name: Check is running
-        uses: actions/github-script@v4
+        uses: actions/github-script@v6
         id: running_count
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
-            const runed = await github.actions.listWorkflowRuns({
+            const runed = await github.resp.actions.listWorkflowRuns({
               owner: context.repo.owner,
               repo: context.repo.repo,
               workflow_id: "run.yml"
@@ -26,15 +26,15 @@ jobs:
               i => i === 'in_progress'
             ).length;
           result-encoding: string
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         if: ${{ steps.running_count.outputs.result == '1' }}
       - name: Get random hash
         if: ${{ steps.running_count.outputs.result == '1' }}
         id: hash
         run: |
           hash="$(sha256sum <(openssl rand -base64 10)|awk '{print $1}')"
-          echo "::set-output name=hash::${hash}"
-      - uses: actions/cache@v2
+          echo "hash=${hash}" >> $GITHUB_OUTPUT
+      - uses: actions/cache@v3
         if: ${{ steps.running_count.outputs.result == '1' }}
         with:
           path: ./docker
@@ -46,7 +46,7 @@ jobs:
         id: search_limit
         run: |
             default="${{ secrets.SEARCH_LIMIT }}"
-            echo "::set-output name=value::${default:-100}"
+            echo "value=${default:-100}" >> $GITHUB_OUTPUT
       - name: Run
         if: ${{ steps.running_count.outputs.result == '1' }}
         run: make gh-action
