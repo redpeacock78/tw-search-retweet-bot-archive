@@ -17,7 +17,10 @@ jobs:
         run: git fetch -f --prune --unshallow --tags
       - name: Install Dependencies
         run: |
-          pip install -r requirements.txt && \
+          git clone --depth=1 https://github.com/kevctae/twint.git && \
+          cd twint && \
+          pip install . -r requirements.txt && \
+          cd .. && \
           yarn install --network-concurrency 1
       - name: Run Test
         run: make test mode=coverage
