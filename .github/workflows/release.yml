@@ -41,8 +41,8 @@ jobs:
         run: |
           hashtag="$(git rev-parse HEAD|cut -c 1-7)"
           version="$(echo ${{ github.ref }}|sed -e "s#refs/tags/##g")"
-          echo "::set-output name=hashtag::${hashtag}"
-          echo "::set-output name=version::${version}"
+          echo "hashtag=${hashtag}" >> $GITHUB_OUTPUT
+          echo "version=${version}" >> $GITHUB_OUTPUT
       - name: Build and push
         uses: docker/build-push-action@v2.9.0
         with:
@@ -58,7 +58,7 @@ jobs:
           echo "PREVIOUS_TAG: $PREVIOUS_TAG"
           COMMIT_SUMMARY="$(git log --oneline --pretty=tformat:"%h %s" $PREVIOUS_TAG..${{ github.ref }})"
           COMMIT_SUMMARY="${COMMIT_SUMMARY//$'\n'/'%0A'}"
-          echo ::set-output name=COMMIT_SUMMARY::$COMMIT_SUMMARY
+          echo "COMMIT_SUMMARY=$COMMIT_SUMMARY" >> $GITHUB_OUTPUT
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
