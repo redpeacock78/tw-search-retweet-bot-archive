@@ -17,6 +17,7 @@ def scrape():
         config.Limit = limit
         config.Search = query
         config.Store_object = True
+        config.Retries_count = 3
         config.Store_object_tweets_list = tweets
         with redirect_stdout(open(os.devnull, 'w')):
             twint.run.Search(config)
