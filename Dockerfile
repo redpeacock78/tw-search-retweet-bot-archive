@@ -14,12 +14,12 @@ RUN DEBIAN_FRONTEND=noninteractive \
 
 WORKDIR /bot
 COPY ./ ./
-RUN git clone --depth=1 https://github.com/kevctae/twint.git && \
+RUN git clone --depth=1 https://github.com/kevctae/twint.git twint && \
   cd twint && \
   pip3 install . -r requirements.txt && \
   cd .. && \
   pip install -r requirements.txt && \
-  yarn install && \
+  yarn install --network-concurrency 1 && \
   make build && \
   pip cache purge && \
   yarn cache clean && \
