@@ -1,4 +1,4 @@
-FROM debian:buster-20210621-slim
+FROM debian:bullseye-slim
 
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update && \
@@ -14,7 +14,11 @@ RUN DEBIAN_FRONTEND=noninteractive \
 
 WORKDIR /bot
 COPY ./ ./
-RUN pip install -r requirements.txt && \
+RUN git clone --depth=1 https://github.com/kevctae/twint.git && \
+  cd twint && \
+  pip3 install . -r requirements.txt && \
+  cd .. && \
+  pip install -r requirements.txt && \
   yarn install && \
   make build && \
   pip cache purge && \
