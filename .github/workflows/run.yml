@@ -35,7 +35,7 @@ jobs:
         if: ${{ steps.running_count.outputs.result == '1' }}
         id: hash
         run: |
-          hash="$(sha256sum <(openssl rand -base64 10)|awk '{print $1}')"
+          hash="$(sha256sum <(date '+%Y%m%d%H%M%S%s'|base64)|awk '{print $1}')"
           echo "hash=${hash}" >> $GITHUB_OUTPUT
       - uses: actions/cache@v3
         if: ${{ steps.running_count.outputs.result == '1' }}
