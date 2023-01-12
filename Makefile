@@ -55,7 +55,7 @@ endif
 
 build:
 	@yarn build && \
-	yarn run pkg dist/main.js -o build/main
+	yarn run pkg --targets node16-linux-x64 dist/main.js -o build/main
 
 gh-action:
 	@docker-compose up -d db && \

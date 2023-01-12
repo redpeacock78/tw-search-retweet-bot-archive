@@ -7,8 +7,12 @@ RUN apk add --update --no-cache --virtual .builder nodejs yarn make && \
 
 WORKDIR /bot
 COPY ./ ./
-RUN pip install -r requirements.txt && \
-  yarn install --network-concurrency 1 && \
+RUN git clone --depth=1 https://github.com/kevctae/twint.git && \
+  cd twint && \
+  pip3 install . -r requirements.txt && \
+  cd .. && \
+  pip install -r requirements.txt && \
+  yarn install && \
   make build && \
   pip cache purge && \
   yarn cache clean && \
